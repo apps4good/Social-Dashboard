@@ -8,6 +8,7 @@
 
 #import "SDViewController.h"
 #import "A4GMediaObject.h"
+#import "A4GHomeScreenCell.h"
 
 @interface SDViewController ()
 {
@@ -54,6 +55,7 @@
     media.type = SMTNewsRSS;
     [arrayOfMedia addObject: media];
 
+    NSLog(@"%d", arrayOfMedia.count);
 }
 
 - (void)viewDidLoad
@@ -64,6 +66,10 @@
     [self setup];
     
 	// Do any additional setup after loading the view, typically from a nib.
+    // Register the nib
+    static NSString *myReuseIdentifier = @"A4GHomeScreenCellIdentifier";
+    UINib *cellNib = [UINib nibWithNibName:@"A4GHomeScreenCell" bundle:nil];
+    [mainTableView registerNib:cellNib forCellReuseIdentifier:myReuseIdentifier];
 
 }
 
@@ -74,5 +80,86 @@
 }
 
 
+#pragma mark - Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return ceilf([arrayOfMedia count]/3.0);
+}
+
+- (A4GMediaObject*) mediaAtIndex:(int)index
+{
+    A4GMediaObject* media = nil;
+    
+    if (index < [arrayOfMedia count])
+    {
+        media = [arrayOfMedia objectAtIndex: index];
+    }
+    
+    return media;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *reuseIdentifier = @"A4GHomeScreenCellIdentifier";
+    A4GHomeScreenCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+//    cell.delegate = self;
+    
+    A4GMediaObject *media = nil;
+    
+    //configure cell
+    cell.buttonA.tag = (indexPath.row * 3) + 1;
+    cell.buttonB.tag = (indexPath.row * 3) + 2;
+    cell.buttonC.tag = (indexPath.row * 3) + 3;
+
+    media = [self mediaAtIndex: cell.buttonA.tag-1];
+//    [cell.buttonA setBackgroundImage: project.thumbnail forState: UIControlStateNormal];
+//    [cell.buttonA setBackgroundImage: project.thumbnail forState: UIControlStateHighlighted];
+//    [cell.textFieldA setText: project.title];
+    
+    media = [self mediaAtIndex: cell.buttonB.tag-1];
+//    [cell.buttonB setBackgroundImage: project.thumbnail forState: UIControlStateNormal];
+//    [cell.buttonB setBackgroundImage: project.thumbnail forState: UIControlStateHighlighted];
+//    [cell.textFieldB setText: project.title];
+
+    media = [self mediaAtIndex: cell.buttonC.tag-1];
+
+    if (indexPath.row == ceilf([arrayOfMedia count] / 3.0) - 1)
+    {
+        switch ([arrayOfMedia count] % 3)
+        {
+            case 2:
+                cell.buttonC.alpha = 0;
+//                cell.textFieldB.alpha = 0;
+//                cell.deleteButtonB.alpha = 0;
+                break;
+            case 1:
+                cell.buttonB.alpha = 0;
+//                cell.textFieldB.alpha = 0;
+//                cell.deleteButtonB.alpha = 0;
+                break;
+            case 0:
+            default:
+                break;
+        }
+    }
+    return cell;
+}
+#pragma mark - Table view delegate
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+}
 @end

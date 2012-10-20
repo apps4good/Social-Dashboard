@@ -13,8 +13,13 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
+    if (self)
+    {
         // Initialization code
+        mediaButton[0] = nil;
+        mediaButton[1] = nil;
+        mediaButton[1] = nil;
+
     }
     return self;
 }
@@ -25,5 +30,62 @@
 
     // Configure the view for the selected state
 }
+
+-(void)prepareForReuse
+{
+    for (int i = 0; i < 3; i++)
+    {
+        mediaButton[i].alpha = 1;
+    }
+}
+
+#pragma mark -
+#pragma mark - Properties
+
+-(void)setMediaButtonAtIndex:(NSInteger)index withButton:(UIButton *)newButton
+{
+    if (mediaButton[index] != nil)
+    {
+        newButton.frame = mediaButton[index].frame;
+    }
+    else
+    {
+        newButton.frame = CGRectMake(96+((240+96)*index), 45, 240, 320);
+    }
+    [mediaButton[index] removeFromSuperview];
+    mediaButton[index] = newButton;
+    [self addSubview: mediaButton[index]];
+}
+
+-(void)setButtonA:(UIButton *)buttonA
+{
+    [self setMediaButtonAtIndex: 0 withButton:buttonA];
+}
+
+-(void)setButtonB:(UIButton *)buttonB
+{
+    [self setMediaButtonAtIndex:1 withButton:buttonB];
+}
+
+-(void)setButtonC:(UIButton *)buttonC
+{
+    [self setMediaButtonAtIndex:2 withButton:buttonC];
+}
+
+-(UIButton *)buttonA
+{
+    return mediaButton[0];
+}
+
+-(UIButton *)buttonB
+{
+    return mediaButton[1];
+}
+
+-(UIButton *)buttonC
+{
+    return mediaButton[2];
+}
+
 
 @end

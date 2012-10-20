@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface A4GHomeScreenCell : UITableViewCell
+{
+    UIButton *mediaButton [3];
+}
+
+@property (strong, nonatomic) IBOutlet UIButton *buttonA;
+@property (strong, nonatomic) IBOutlet UIButton *buttonB;
+@property (strong, nonatomic) IBOutlet UIButton *buttonC;
 
 @end

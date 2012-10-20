@@ -10,7 +10,7 @@
 
 @interface SDViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-    IBOutlet UITableView *tableView;
+    IBOutlet UITableView *mainTableView;
 }
 
 @end

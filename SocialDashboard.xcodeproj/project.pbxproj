@@ -22,6 +22,7 @@
 		B5ABE5C616333F130063306E /* SDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5C516333F130063306E /* SDViewController.xib */; };
 		B5ABE5CB163348CF0063306E /* A4GMediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5CA163348CF0063306E /* A4GMediaObject.m */; };
 		B5ABE5E2163353790063306E /* A4GHomeScreenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */; };
+		B5ABE5E4163355130063306E /* A4GHomeScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		B5ABE5CA163348CF0063306E /* A4GMediaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GMediaObject.m; sourceTree = "<group>"; };
 		B5ABE5E0163353790063306E /* A4GHomeScreenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GHomeScreenCell.h; sourceTree = "<group>"; };
 		B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GHomeScreenCell.m; sourceTree = "<group>"; };
+		B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A4GHomeScreenCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				B5ABE5C516333F130063306E /* SDViewController.xib */,
+				B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */,
 			);
 			path = NIBS;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				B5ABE59C163335660063306E /* Default@2x.png in Resources */,
 				B5ABE59E163335660063306E /* Default-568h@2x.png in Resources */,
 				B5ABE5C616333F130063306E /* SDViewController.xib in Resources */,
+				B5ABE5E4163355130063306E /* A4GHomeScreenCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
