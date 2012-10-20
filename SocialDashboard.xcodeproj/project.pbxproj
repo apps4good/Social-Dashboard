@@ -18,6 +18,8 @@
 		B5ABE59E163335660063306E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE59D163335660063306E /* Default-568h@2x.png */; };
 		B5ABE5A1163335660063306E /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5A0163335660063306E /* SDViewController.m */; };
 		B5ABE5A4163335660063306E /* SDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5A2163335660063306E /* SDViewController.xib */; };
+		B5ABE5BB16333ACE0063306E /* A4GSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5BA16333ACE0063306E /* A4GSettings.m */; };
+		B5ABE5C016333B3D0063306E /* UIColor+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5BF16333B3D0063306E /* UIColor+A4G.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		B5ABE59F163335660063306E /* SDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDViewController.h; sourceTree = "<group>"; };
 		B5ABE5A0163335660063306E /* SDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDViewController.m; sourceTree = "<group>"; };
 		B5ABE5A3163335660063306E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SDViewController.xib; sourceTree = "<group>"; };
+		B5ABE5B916333ACE0063306E /* A4GSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GSettings.h; sourceTree = "<group>"; };
+		B5ABE5BA16333ACE0063306E /* A4GSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GSettings.m; sourceTree = "<group>"; };
+		B5ABE5BE16333B3D0063306E /* UIColor+A4G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+A4G.h"; sourceTree = "<group>"; };
+		B5ABE5BF16333B3D0063306E /* UIColor+A4G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+A4G.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,8 @@
 				B5ABE59F163335660063306E /* SDViewController.h */,
 				B5ABE5A0163335660063306E /* SDViewController.m */,
 				B5ABE5A2163335660063306E /* SDViewController.xib */,
+				B5ABE5BD16333B3D0063306E /* Categories */,
+				B5ABE5B816333ACE0063306E /* Models */,
 				B5ABE58E163335660063306E /* Supporting Files */,
 			);
 			path = SocialDashboard;
@@ -105,6 +113,24 @@
 				B5ABE59D163335660063306E /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B5ABE5B816333ACE0063306E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABE5B916333ACE0063306E /* A4GSettings.h */,
+				B5ABE5BA16333ACE0063306E /* A4GSettings.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5ABE5BD16333B3D0063306E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABE5BE16333B3D0063306E /* UIColor+A4G.h */,
+				B5ABE5BF16333B3D0063306E /* UIColor+A4G.m */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +203,8 @@
 				B5ABE594163335660063306E /* main.m in Sources */,
 				B5ABE598163335660063306E /* SDAppDelegate.m in Sources */,
 				B5ABE5A1163335660063306E /* SDViewController.m in Sources */,
+				B5ABE5BB16333ACE0063306E /* A4GSettings.m in Sources */,
+				B5ABE5C016333B3D0063306E /* UIColor+A4G.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +252,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -245,7 +273,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -258,6 +286,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialDashboard/SocialDashboard-Prefix.pch";
 				INFOPLIST_FILE = "SocialDashboard/SocialDashboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -269,6 +298,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialDashboard/SocialDashboard-Prefix.pch";
 				INFOPLIST_FILE = "SocialDashboard/SocialDashboard-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -293,6 +323,7 @@
 				B5ABE5A9163335660063306E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

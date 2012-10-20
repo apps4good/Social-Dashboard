@@ -17,7 +17,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[SDViewController alloc] initWithNibName:@"SDViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController: self.viewController];
+    
+    self.viewController.title = [A4GSettings homeScreenTitle];
+    self.window.rootViewController = naviVC;
     [self.window makeKeyAndVisible];
     return YES;
 }
