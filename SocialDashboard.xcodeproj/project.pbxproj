@@ -1,0 +1,300 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B5ABE588163335650063306E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE587163335650063306E /* UIKit.framework */; };
+		B5ABE58A163335650063306E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE589163335650063306E /* Foundation.framework */; };
+		B5ABE58C163335650063306E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE58B163335650063306E /* CoreGraphics.framework */; };
+		B5ABE592163335660063306E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE590163335660063306E /* InfoPlist.strings */; };
+		B5ABE594163335660063306E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE593163335660063306E /* main.m */; };
+		B5ABE598163335660063306E /* SDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE597163335660063306E /* SDAppDelegate.m */; };
+		B5ABE59A163335660063306E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE599163335660063306E /* Default.png */; };
+		B5ABE59C163335660063306E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE59B163335660063306E /* Default@2x.png */; };
+		B5ABE59E163335660063306E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE59D163335660063306E /* Default-568h@2x.png */; };
+		B5ABE5A1163335660063306E /* SDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5A0163335660063306E /* SDViewController.m */; };
+		B5ABE5A4163335660063306E /* SDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5A2163335660063306E /* SDViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B5ABE583163335650063306E /* SocialDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5ABE587163335650063306E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B5ABE589163335650063306E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B5ABE58B163335650063306E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B5ABE58F163335660063306E /* SocialDashboard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SocialDashboard-Info.plist"; sourceTree = "<group>"; };
+		B5ABE591163335660063306E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B5ABE593163335660063306E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B5ABE595163335660063306E /* SocialDashboard-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocialDashboard-Prefix.pch"; sourceTree = "<group>"; };
+		B5ABE596163335660063306E /* SDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDAppDelegate.h; sourceTree = "<group>"; };
+		B5ABE597163335660063306E /* SDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDAppDelegate.m; sourceTree = "<group>"; };
+		B5ABE599163335660063306E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B5ABE59B163335660063306E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		B5ABE59D163335660063306E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B5ABE59F163335660063306E /* SDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDViewController.h; sourceTree = "<group>"; };
+		B5ABE5A0163335660063306E /* SDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDViewController.m; sourceTree = "<group>"; };
+		B5ABE5A3163335660063306E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SDViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B5ABE580163335650063306E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5ABE588163335650063306E /* UIKit.framework in Frameworks */,
+				B5ABE58A163335650063306E /* Foundation.framework in Frameworks */,
+				B5ABE58C163335650063306E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B5ABE578163335650063306E = {
+			isa = PBXGroup;
+			children = (
+				B5ABE58D163335650063306E /* SocialDashboard */,
+				B5ABE586163335650063306E /* Frameworks */,
+				B5ABE584163335650063306E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B5ABE584163335650063306E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABE583163335650063306E /* SocialDashboard.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5ABE586163335650063306E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABE587163335650063306E /* UIKit.framework */,
+				B5ABE589163335650063306E /* Foundation.framework */,
+				B5ABE58B163335650063306E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5ABE58D163335650063306E /* SocialDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABE596163335660063306E /* SDAppDelegate.h */,
+				B5ABE597163335660063306E /* SDAppDelegate.m */,
+				B5ABE59F163335660063306E /* SDViewController.h */,
+				B5ABE5A0163335660063306E /* SDViewController.m */,
+				B5ABE5A2163335660063306E /* SDViewController.xib */,
+				B5ABE58E163335660063306E /* Supporting Files */,
+			);
+			path = SocialDashboard;
+			sourceTree = "<group>";
+		};
+		B5ABE58E163335660063306E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B5ABE58F163335660063306E /* SocialDashboard-Info.plist */,
+				B5ABE590163335660063306E /* InfoPlist.strings */,
+				B5ABE593163335660063306E /* main.m */,
+				B5ABE595163335660063306E /* SocialDashboard-Prefix.pch */,
+				B5ABE599163335660063306E /* Default.png */,
+				B5ABE59B163335660063306E /* Default@2x.png */,
+				B5ABE59D163335660063306E /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5ABE582163335650063306E /* SocialDashboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5ABE5A7163335660063306E /* Build configuration list for PBXNativeTarget "SocialDashboard" */;
+			buildPhases = (
+				B5ABE57F163335650063306E /* Sources */,
+				B5ABE580163335650063306E /* Frameworks */,
+				B5ABE581163335650063306E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SocialDashboard;
+			productName = SocialDashboard;
+			productReference = B5ABE583163335650063306E /* SocialDashboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5ABE57A163335650063306E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SD;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Apps4Good;
+			};
+			buildConfigurationList = B5ABE57D163335650063306E /* Build configuration list for PBXProject "SocialDashboard" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B5ABE578163335650063306E;
+			productRefGroup = B5ABE584163335650063306E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5ABE582163335650063306E /* SocialDashboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5ABE581163335650063306E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5ABE592163335660063306E /* InfoPlist.strings in Resources */,
+				B5ABE59A163335660063306E /* Default.png in Resources */,
+				B5ABE59C163335660063306E /* Default@2x.png in Resources */,
+				B5ABE59E163335660063306E /* Default-568h@2x.png in Resources */,
+				B5ABE5A4163335660063306E /* SDViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5ABE57F163335650063306E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5ABE594163335660063306E /* main.m in Sources */,
+				B5ABE598163335660063306E /* SDAppDelegate.m in Sources */,
+				B5ABE5A1163335660063306E /* SDViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B5ABE590163335660063306E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5ABE591163335660063306E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B5ABE5A2163335660063306E /* SDViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5ABE5A3163335660063306E /* en */,
+			);
+			name = SDViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B5ABE5A5163335660063306E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B5ABE5A6163335660063306E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5ABE5A8163335660063306E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SocialDashboard/SocialDashboard-Prefix.pch";
+				INFOPLIST_FILE = "SocialDashboard/SocialDashboard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B5ABE5A9163335660063306E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SocialDashboard/SocialDashboard-Prefix.pch";
+				INFOPLIST_FILE = "SocialDashboard/SocialDashboard-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5ABE57D163335650063306E /* Build configuration list for PBXProject "SocialDashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5ABE5A5163335660063306E /* Debug */,
+				B5ABE5A6163335660063306E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5ABE5A7163335660063306E /* Build configuration list for PBXNativeTarget "SocialDashboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5ABE5A8163335660063306E /* Debug */,
+				B5ABE5A9163335660063306E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5ABE57A163335650063306E /* Project object */;
+}
