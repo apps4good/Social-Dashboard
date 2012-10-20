@@ -30,11 +30,9 @@
 
 @interface A4GSettings : NSObject
 
-// new
-+ (NSString *) homeScreenTitle;
+// move to public from private for Social Dashboard usage
++ (NSString*) stringFromBundleForKey:(NSString *)key;
 
-
-// previous
 + (NSString *) appName;
 + (NSString *) appText;
 + (NSString *) appURL;

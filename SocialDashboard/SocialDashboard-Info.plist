@@ -2,8 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>A4GHomeScreen</key>
+	<key>A4GHomeScreenTitle</key>
 	<string>Apps4Good</string>
+	<key>A4GEmailInfo</key>
+	<string>something@apps4good.com</string>
+	<key>A4GPhoneNumber</key>
+	<string></string>
+	<key>A4GFacebookPage</key>
+	<string></string>
+	<key>A4GTwitterFeed</key>
+	<string></string>
+	<key>A4GNewsRSSFeed</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

@@ -20,6 +20,8 @@
 		B5ABE5BB16333ACE0063306E /* A4GSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5BA16333ACE0063306E /* A4GSettings.m */; };
 		B5ABE5C016333B3D0063306E /* UIColor+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5BF16333B3D0063306E /* UIColor+A4G.m */; };
 		B5ABE5C616333F130063306E /* SDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5C516333F130063306E /* SDViewController.xib */; };
+		B5ABE5CB163348CF0063306E /* A4GMediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5CA163348CF0063306E /* A4GMediaObject.m */; };
+		B5ABE5E2163353790063306E /* A4GHomeScreenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,11 @@
 		B5ABE5BE16333B3D0063306E /* UIColor+A4G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+A4G.h"; sourceTree = "<group>"; };
 		B5ABE5BF16333B3D0063306E /* UIColor+A4G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+A4G.m"; sourceTree = "<group>"; };
 		B5ABE5C516333F130063306E /* SDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SDViewController.xib; sourceTree = "<group>"; };
+		B5ABE5C7163343550063306E /* ApplicationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationConstants.h; sourceTree = "<group>"; };
+		B5ABE5C9163348CF0063306E /* A4GMediaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GMediaObject.h; sourceTree = "<group>"; };
+		B5ABE5CA163348CF0063306E /* A4GMediaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GMediaObject.m; sourceTree = "<group>"; };
+		B5ABE5E0163353790063306E /* A4GHomeScreenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GHomeScreenCell.h; sourceTree = "<group>"; };
+		B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GHomeScreenCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +112,7 @@
 				B5ABE590163335660063306E /* InfoPlist.strings */,
 				B5ABE593163335660063306E /* main.m */,
 				B5ABE595163335660063306E /* SocialDashboard-Prefix.pch */,
+				B5ABE5C7163343550063306E /* ApplicationConstants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -114,6 +122,8 @@
 			children = (
 				B5ABE5B916333ACE0063306E /* A4GSettings.h */,
 				B5ABE5BA16333ACE0063306E /* A4GSettings.m */,
+				B5ABE5C9163348CF0063306E /* A4GMediaObject.h */,
+				B5ABE5CA163348CF0063306E /* A4GMediaObject.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +144,8 @@
 				B5ABE597163335660063306E /* SDAppDelegate.m */,
 				B5ABE59F163335660063306E /* SDViewController.h */,
 				B5ABE5A0163335660063306E /* SDViewController.m */,
+				B5ABE5E0163353790063306E /* A4GHomeScreenCell.h */,
+				B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -150,6 +162,7 @@
 		B5ABE5C316333E540063306E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B5ABE5C8163345A30063306E /* Icons */,
 				B5ABE599163335660063306E /* Default.png */,
 				B5ABE59B163335660063306E /* Default@2x.png */,
 				B5ABE59D163335660063306E /* Default-568h@2x.png */,
@@ -163,6 +176,13 @@
 				B5ABE5C516333F130063306E /* SDViewController.xib */,
 			);
 			path = NIBS;
+			sourceTree = "<group>";
+		};
+		B5ABE5C8163345A30063306E /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,7 +211,7 @@
 		B5ABE57A163335650063306E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = SD;
+				CLASSPREFIX = A4G;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Apps4Good;
 			};
@@ -237,6 +257,8 @@
 				B5ABE5A1163335660063306E /* SDViewController.m in Sources */,
 				B5ABE5BB16333ACE0063306E /* A4GSettings.m in Sources */,
 				B5ABE5C016333B3D0063306E /* UIColor+A4G.m in Sources */,
+				B5ABE5CB163348CF0063306E /* A4GMediaObject.m in Sources */,
+				B5ABE5E2163353790063306E /* A4GHomeScreenCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

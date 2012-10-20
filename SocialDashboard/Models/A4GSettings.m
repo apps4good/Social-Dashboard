@@ -31,7 +31,6 @@
 
 @interface A4GSettings ()
 
-+ (NSString*) stringFromBundleForKey:(NSString *)key;
 + (BOOL) boolFromBundleForKey:(NSString *)key;
 + (UIColor*) colorFromBundleForKey:(NSString *)key;
 + (NSDictionary*) dictionaryFromBundleForKey:(NSString *)key;
@@ -50,10 +49,6 @@
 @end
 
 @implementation A4GSettings
-
-+ (NSString *) homeScreenTitle {
-    return [A4GSettings stringFromBundleForKey: @"A4GHomeScreen"];
-}
 
 + (NSArray *) kmlFiles {
     return [[NSBundle mainBundle] pathsForResourcesOfType:@"kml" inDirectory:nil];
