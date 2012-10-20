@@ -1,10 +1,31 @@
+// ##########################################################################################
 //
-//  A4GDownload.m
-//  Brandagram
+// Copyright (c) 2012, Apps4Good. All rights reserved.
 //
-//  Created by Dale Zak on 12-10-20.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+// Redistribution and use in source and binary forms, with or without modification, are
+// permitted provided that the following conditions are met:
 //
+// 1) Redistributions of source code must retain the above copyright notice, this list of
+//    conditions and the following disclaimer.
+// 2) Redistributions in binary form must reproduce the above copyright notice, this list
+//    of conditions and the following disclaimer in the documentation
+//    and/or other materials provided with the distribution.
+// 3) Neither the name of the Apps4Good nor the names of its contributors may be used to
+//    endorse or promote products derived from this software without specific prior written
+//    permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+// EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+// OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+// SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+// OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+// TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+// EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// ##########################################################################################
+
 
 #import "A4GDownload.h"
 #import "SBJson.h"
@@ -32,7 +53,7 @@
 @synthesize response = _response;
 
 + (id) downloadWithDelegate:(NSObject<A4GDownloadDelegate>*)delegate url:(NSString*)url {
-    return [[[A4GDownload alloc] initWithDelegate:delegate url:url] autorelease];
+    return [[A4GDownload alloc] initWithDelegate:delegate url:url];
 }
 
 - (id) initWithDelegate:(NSObject<A4GDownloadDelegate>*)delegate url:(NSString*)url {
@@ -43,16 +64,8 @@
     return self;
 }
 
-- (void)dealloc {
-    DLog(@"%@ URL:%@", self.class, self.url);
-    [_url release];
-    [_connection release];
-    [_response release];
-    [super dealloc];
-}
-
 - (void) parseWithDictionary:(NSString*)response {
-    DLog(@"%@ URL:%@", self.class, self.url);
+    NSLog(@"%@ URL:%@", self.class, self.url);
 }
 
 - (void)start {
@@ -60,7 +73,7 @@
         [self performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:YES];
         return;
     }
-    DLog(@"%@ URL:%@", self.class, self.url);
+    NSLog(@"%@ URL:%@", self.class, self.url);
     
     [self willChangeValueForKey:@"isExecuting"];
     _isExecuting = YES;
@@ -74,7 +87,7 @@
 }
 
 - (void) finish {
-    DLog(@"%@ URL:%@", self.class, self.url);
+    NSLog(@"%@ URL:%@", self.class, self.url);
     
     [self willChangeValueForKey:@"isExecuting"];
     [self willChangeValueForKey:@"isFinished"];
@@ -87,7 +100,7 @@
 } 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    DLog(@"%@ URL:%@", self.class, self.url);
+    NSLog(@"%@ URL:%@", self.class, self.url);
     self.response = [NSMutableData data];
     [self.delegate performSelectorOnMainThread:@selector(download:connected:) 
                                  waitUntilDone:YES  
@@ -99,7 +112,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {  
-    DLog(@"%@ URL:%@ ERROR:%@", self.class, self.url, [error description]);
+    NSLog(@"%@ URL:%@ ERROR:%@", self.class, self.url, [error description]);
     [self.delegate performSelectorOnMainThread:@selector(download:finished:error:) 
                                  waitUntilDone:YES  
                                    withObjects:self, self.url, error, nil];
@@ -107,7 +120,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    DLog(@"%@ URL:%@", self.class, self.url);
+    NSLog(@"%@ URL:%@", self.class, self.url);
     NSString *string = [NSString utf8StringFromData:self.response];
     NSError *error = nil;
     if (string != nil && string.length > 0) {
