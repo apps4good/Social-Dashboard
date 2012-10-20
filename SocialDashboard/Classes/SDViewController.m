@@ -70,6 +70,9 @@
     static NSString *myReuseIdentifier = @"A4GHomeScreenCellIdentifier";
     UINib *cellNib = [UINib nibWithNibName:@"A4GHomeScreenCell" bundle:nil];
     [mainTableView registerNib:cellNib forCellReuseIdentifier:myReuseIdentifier];
+    
+    [mainTableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
+    [mainTableView setBounces: NO];
 
 }
 
@@ -111,6 +114,7 @@
     static NSString *reuseIdentifier = @"A4GHomeScreenCellIdentifier";
     A4GHomeScreenCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
 //    cell.delegate = self;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     A4GMediaObject *media = nil;
     
@@ -120,16 +124,13 @@
     cell.buttonC.tag = (indexPath.row * 3) + 3;
 
     media = [self mediaAtIndex: cell.buttonA.tag-1];
-//    [cell.buttonA setBackgroundImage: project.thumbnail forState: UIControlStateNormal];
-//    [cell.buttonA setBackgroundImage: project.thumbnail forState: UIControlStateHighlighted];
-//    [cell.textFieldA setText: project.title];
+    cell.buttonA.backgroundColor = [UIColor greenColor];
     
     media = [self mediaAtIndex: cell.buttonB.tag-1];
-//    [cell.buttonB setBackgroundImage: project.thumbnail forState: UIControlStateNormal];
-//    [cell.buttonB setBackgroundImage: project.thumbnail forState: UIControlStateHighlighted];
-//    [cell.textFieldB setText: project.title];
+    cell.buttonB.backgroundColor = [UIColor greenColor];
 
     media = [self mediaAtIndex: cell.buttonC.tag-1];
+    cell.buttonC.backgroundColor = [UIColor greenColor];
 
     if (indexPath.row == ceilf([arrayOfMedia count] / 3.0) - 1)
     {
@@ -137,13 +138,10 @@
         {
             case 2:
                 cell.buttonC.alpha = 0;
-//                cell.textFieldB.alpha = 0;
-//                cell.deleteButtonB.alpha = 0;
                 break;
             case 1:
                 cell.buttonB.alpha = 0;
-//                cell.textFieldB.alpha = 0;
-//                cell.deleteButtonB.alpha = 0;
+                cell.buttonC.alpha = 0;
                 break;
             case 0:
             default:

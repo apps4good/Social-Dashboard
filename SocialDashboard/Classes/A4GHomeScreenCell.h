@@ -10,7 +10,7 @@
 
 @interface A4GHomeScreenCell : UITableViewCell
 {
-    UIButton *mediaButton [3];
+    UIButton *mediaButton[3];
 }
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonA;

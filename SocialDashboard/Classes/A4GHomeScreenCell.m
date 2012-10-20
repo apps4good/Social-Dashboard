@@ -18,7 +18,7 @@
         // Initialization code
         mediaButton[0] = nil;
         mediaButton[1] = nil;
-        mediaButton[1] = nil;
+        mediaButton[2] = nil;
 
     }
     return self;
@@ -48,10 +48,6 @@
     {
         newButton.frame = mediaButton[index].frame;
     }
-    else
-    {
-        newButton.frame = CGRectMake(96+((240+96)*index), 45, 240, 320);
-    }
     [mediaButton[index] removeFromSuperview];
     mediaButton[index] = newButton;
     [self addSubview: mediaButton[index]];
@@ -64,12 +60,12 @@
 
 -(void)setButtonB:(UIButton *)buttonB
 {
-    [self setMediaButtonAtIndex:1 withButton:buttonB];
+    [self setMediaButtonAtIndex: 1 withButton:buttonB];
 }
 
 -(void)setButtonC:(UIButton *)buttonC
 {
-    [self setMediaButtonAtIndex:2 withButton:buttonC];
+    [self setMediaButtonAtIndex: 2 withButton:buttonC];
 }
 
 -(UIButton *)buttonA

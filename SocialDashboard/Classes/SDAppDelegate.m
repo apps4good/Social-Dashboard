@@ -19,6 +19,7 @@
     self.viewController = [[SDViewController alloc] initWithNibName:@"SDViewController" bundle:nil];
     UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController: self.viewController];
     self.viewController.title = [A4GSettings stringFromBundleForKey: kHomeScreenTitle];
+    [naviVC setToolbarHidden: NO];
     self.window.rootViewController = naviVC;
     [self.window makeKeyAndVisible];
     return YES;
