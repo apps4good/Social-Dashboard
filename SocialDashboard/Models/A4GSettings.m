@@ -55,6 +55,10 @@
     return [A4GSettings stringFromBundleForKey:@"A4GHomeScreenTitle"];
 }
 
++ (UIColor *) homeScreenBgColor {
+    return [A4GSettings colorFromBundleForKey: @"A4GHomeScreenBgColor"];
+}
+
 // Social Icons
 + (UIImage *) emailIcon {
     return [UIImage imageNamed: [A4GSettings stringFromBundleForKey: @"A4GEmailIcon"]];

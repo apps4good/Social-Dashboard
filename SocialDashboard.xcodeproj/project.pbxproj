@@ -54,6 +54,7 @@
 		B5ABE61A163466540063306E /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE610163466530063306E /* phone@2x.png */; };
 		B5ABE61B163466540063306E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE611163466540063306E /* twitter.png */; };
 		B5ABE61C163466540063306E /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE612163466540063306E /* twitter@2x.png */; };
+		B5ABE62716346FB80063306E /* A4GHomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE62616346FB80063306E /* A4GHomeScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +136,8 @@
 		B5ABE610163466530063306E /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
 		B5ABE611163466540063306E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		B5ABE612163466540063306E /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
+		B5ABE62516346FB80063306E /* A4GHomeScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GHomeScreenViewController.h; sourceTree = "<group>"; };
+		B5ABE62616346FB80063306E /* A4GHomeScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GHomeScreenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +289,8 @@
 				B5ABE5A0163335660063306E /* SDViewController.m */,
 				B5ABE5E0163353790063306E /* A4GHomeScreenCell.h */,
 				B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */,
+				B5ABE62516346FB80063306E /* A4GHomeScreenViewController.h */,
+				B5ABE62616346FB80063306E /* A4GHomeScreenViewController.m */,
 				B5ABE5F2163379EE0063306E /* A4GFeedTableViewController.h */,
 				B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */,
 				B5ABE5F616337CC30063306E /* A4GFacebookPageViewController.h */,
@@ -445,6 +450,7 @@
 				B5ABE5F4163379EE0063306E /* A4GFeedTableViewController.m in Sources */,
 				B5ABE5F816337CC30063306E /* A4GFacebookPageViewController.m in Sources */,
 				92CA6E5F1634519600A5016A /* A4GRSSEntry.m in Sources */,
+				B5ABE62716346FB80063306E /* A4GHomeScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

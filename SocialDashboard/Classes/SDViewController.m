@@ -79,6 +79,7 @@
     
     [mainTableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
     [mainTableView setBounces: NO];
+    [mainTableView setBackgroundColor: [A4GSettings homeScreenBgColor]];
 
 }
 

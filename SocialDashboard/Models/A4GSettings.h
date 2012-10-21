@@ -32,7 +32,7 @@
 
 // Home Screen
 + (NSString *) homeScreenTitle;
-
++ (UIColor *) homeScreenBgColor;
 
 // Social Icons
 + (UIImage *) emailIcon;

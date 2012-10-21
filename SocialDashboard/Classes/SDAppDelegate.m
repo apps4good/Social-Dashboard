@@ -9,6 +9,7 @@
 #import "SDAppDelegate.h"
 
 #import "SDViewController.h"
+#import "A4GHomeScreenViewController.h"
 
 @implementation SDAppDelegate
 
@@ -16,7 +17,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[SDViewController alloc] initWithNibName:@"SDViewController" bundle:nil];
+    self.viewController = [[A4GHomeScreenViewController alloc] init];
     UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController: self.viewController];
     self.viewController.title = [A4GSettings homeScreenTitle];
     [naviVC setToolbarHidden: NO];

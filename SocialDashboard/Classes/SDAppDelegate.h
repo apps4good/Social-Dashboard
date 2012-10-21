@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class SDViewController;
+@class A4GHomeScreenViewController;
 
 @interface SDAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) SDViewController *viewController;
+@property (strong, nonatomic) A4GHomeScreenViewController *viewController;
 
 @end
