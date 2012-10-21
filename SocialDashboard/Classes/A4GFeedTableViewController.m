@@ -12,12 +12,24 @@
 {
     NSMutableArray *tweetData;
     NSMutableArray *tweetUser;
+    NSMutableArray *tweetUserUrl;
+    dispatch_queue_t imageQueue;
 }
 @end
 
 
 
 @implementation A4GFeedTableViewController
+
+
+- (id)init
+{
+    if (self = [super init]) {
+        imageQueue = dispatch_queue_create("com.company.app.imageQueue", NULL);
+    }
+    return self;
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,8 +50,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    tweetData = [NSMutableArray new];
-    tweetUser = [NSMutableArray new];
+    tweetData    = [NSMutableArray new];
+    tweetUser    = [NSMutableArray new];
+    tweetUserUrl = [NSMutableArray new];
     
     NSString *twitterSearch = [NSString stringWithFormat:@"http://search.twitter.com/search.json?q=%@", [A4GSettings twitterFeedLink]];
     
@@ -59,12 +72,14 @@
 			output = [NSString stringWithFormat:@"HTTP response status: %i\nPublic timeline:\n%@", [urlResponse statusCode], publicTimeline];
             NSArray *tweets = [publicTimeline objectForKey:@"results"];
             for (NSDictionary *tweet in tweets) {
-                [tweetData addObject:[tweet objectForKey:@"text"]];
-                [tweetUser addObject:[tweet objectForKey:@"from_user"]];
+                [tweetData    addObject:[tweet objectForKey:@"text"]];
+                [tweetUser    addObject:[tweet objectForKey:@"from_user"]];
+                [tweetUserUrl addObject:[tweet objectForKey:@"profile_image_url"]];
             }
 		}
 		else {
 			output = [NSString stringWithFormat:@"HTTP response status: %i\n", [urlResponse statusCode]];
+            NSLog(@"GOT FROM TWTITER STATUS CODE %@", output);
 		}
         [self.tableView reloadData];
         
@@ -103,13 +118,33 @@
         cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: CellIdentifier];
     }
     
-        NSString *tweet = [tweetData objectAtIndex:indexPath.row];
-        NSString *user  = [tweetUser objectAtIndex:indexPath.row];
-        NSLog(@"Fetching%d", [tweetData count]);
+        NSString *tweet       = [tweetData    objectAtIndex:indexPath.row];
+        NSString *user        = [tweetUser    objectAtIndex:indexPath.row];
+        NSString *profileUrl  = [tweetUserUrl objectAtIndex:indexPath.row];
         cell.textLabel.text = [NSString stringWithFormat: @"@%@", user];
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         cell.detailTextLabel.numberOfLines = 0;
         cell.detailTextLabel.text =  [NSString stringWithFormat: @"%@", tweet];
+    
+        if (cell.imageView.image == nil)
+        {
+            dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            //this will start the image loading in bg
+            dispatch_async(concurrentQueue, ^{
+                NSData *image = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:profileUrl]];
+                
+                //this will set the image when loading is finished
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    cell.imageView.image = [UIImage imageWithData:image];
+//                    //
+//                    dispatch_release(concurrentQueue);
+                    [tableView reloadData];
+                    
+                });
+            });
+        }
+    
+        //cell.imageView =
 
     
     return cell;
@@ -118,7 +153,7 @@
 #pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 98.0;
+    return 120.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
