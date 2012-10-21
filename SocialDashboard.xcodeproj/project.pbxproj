@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37A35B2416344489005E9AA5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A35B2316344489005E9AA5 /* Twitter.framework */; };
+		37A35B3016347DBD005E9AA5 /* A4GRssTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A35B2F16347DBD005E9AA5 /* A4GRssTableViewController.m */; };
 		920B2973163367C200D2BF8E /* A4GDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B2972163367C200D2BF8E /* A4GDownload.m */; };
 		920B29931633686300D2BF8E /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B297B1633686300D2BF8E /* NSObject+SBJson.m */; };
 		920B29941633686300D2BF8E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B297E1633686300D2BF8E /* SBJsonParser.m */; };
@@ -58,6 +60,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37A35B2316344489005E9AA5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		37A35B2E16347DBD005E9AA5 /* A4GRssTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GRssTableViewController.h; sourceTree = "<group>"; };
+		37A35B2F16347DBD005E9AA5 /* A4GRssTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GRssTableViewController.m; sourceTree = "<group>"; };
 		920B2971163367C200D2BF8E /* A4GDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GDownload.h; sourceTree = "<group>"; };
 		920B2972163367C200D2BF8E /* A4GDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GDownload.m; sourceTree = "<group>"; };
 		920B297A1633686300D2BF8E /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -146,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5ABE6021634506D0063306E /* MessageUI.framework in Frameworks */,
+				37A35B2416344489005E9AA5 /* Twitter.framework in Frameworks */,
 				B5ABE588163335650063306E /* UIKit.framework in Frameworks */,
 				B5ABE58A163335650063306E /* Foundation.framework in Frameworks */,
 				B5ABE58C163335650063306E /* CoreGraphics.framework in Frameworks */,
@@ -204,6 +210,7 @@
 		B5ABE578163335650063306E = {
 			isa = PBXGroup;
 			children = (
+				37A35B2316344489005E9AA5 /* Twitter.framework */,
 				B5ABE58D163335650063306E /* SocialDashboard */,
 				B5ABE586163335650063306E /* Frameworks */,
 				B5ABE584163335650063306E /* Products */,
@@ -295,6 +302,8 @@
 				B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */,
 				B5ABE5F616337CC30063306E /* A4GFacebookPageViewController.h */,
 				B5ABE5F716337CC30063306E /* A4GFacebookPageViewController.m */,
+				37A35B2E16347DBD005E9AA5 /* A4GRssTableViewController.h */,
+				37A35B2F16347DBD005E9AA5 /* A4GRssTableViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
