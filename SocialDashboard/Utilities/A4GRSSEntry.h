@@ -28,20 +28,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface A4GRSSEntry : NSObject {
-@private
-    // Date and time at which the earthquake occurred.
-    NSDate *date;
-    // The application uses this URL to open that page in Safari.
-    NSURL *url;
-    NSString * title;
-    NSString * author;
-}
+@interface A4GRSSEntry : NSObject
 
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) NSURL *url;
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *author;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *author;
 
 - (void) logData;
 @end

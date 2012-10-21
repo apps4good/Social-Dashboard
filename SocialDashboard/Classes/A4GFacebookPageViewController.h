@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface A4GFacebookPageViewController : UITableViewController{
-
-@private
-// for downloading the xml data
-NSURLConnection *facebookFeedConnection;
-NSMutableData *rssData;
-
-NSOperationQueue *parseQueue;
-}
+@interface A4GFacebookPageViewController : UITableViewController
 
 @end

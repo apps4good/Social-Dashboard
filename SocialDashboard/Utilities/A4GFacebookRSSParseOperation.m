@@ -42,9 +42,9 @@ NSString *kFacebookErrorNotif = @"EarthquakeErrorNotif";
 NSString *kFacebookMsgErrorKey = @"EarthquakesMsgErrorKey";
 
 @interface A4GFacebookRSSParseOperation () <NSXMLParserDelegate>
-    @property (nonatomic, retain) A4GRSSEntry *currentEntryObject;
-    @property (nonatomic, retain) NSMutableArray *currentParseBatch;
-    @property (nonatomic, retain) NSMutableString *currentParsedCharacterData;
+    @property (nonatomic, strong) A4GRSSEntry *currentEntryObject;
+    @property (nonatomic, strong) NSMutableArray *currentParseBatch;
+    @property (nonatomic, strong) NSMutableString *currentParsedCharacterData;
 @end
 
 @implementation A4GFacebookRSSParseOperation
@@ -75,7 +75,6 @@ NSString *kFacebookMsgErrorKey = @"EarthquakesMsgErrorKey";
 
 // the main function for this NSOperation, to start the parsing
 - (void)main {
-    NSLog(@"start here");
     self.currentParseBatch = [NSMutableArray array];
     self.currentParsedCharacterData = [NSMutableString string];
     
@@ -163,7 +162,7 @@ static NSString * const kUpdatedElementName = @"pubDate";
             self.currentParseBatch = [NSMutableArray array];
         }
     } else if ([elementName isEqualToString:kTitleElementName]) {
-        self.currentEntryObject.title = self.currentParsedCharacterData;
+        self.currentEntryObject.title = [self.currentParsedCharacterData copy];
     }
     else if ([elementName isEqualToString:kUpdatedElementName]) {
         if (self.currentEntryObject != nil) {
@@ -177,13 +176,11 @@ static NSString * const kUpdatedElementName = @"pubDate";
             // so don't process it here.
         }
     } else if ([elementName isEqualToString:kAuthorElementName]) {
-        self.currentEntryObject.author = self.currentParsedCharacterData;
+        self.currentEntryObject.author = [self.currentParsedCharacterData copy];
         
     } else if ([elementName isEqualToString:kLinkElementName]) {
         self.currentEntryObject.url = [NSURL URLWithString:self.currentParsedCharacterData];
     }
-    
-    [self.currentEntryObject logData];
     // Stop accumulating parsed character data. We won't start again until specific elements begin.
     accumulatingParsedCharacterData = NO;
 }

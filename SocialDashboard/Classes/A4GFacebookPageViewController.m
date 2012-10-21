@@ -8,20 +8,20 @@
 
 #import "A4GFacebookPageViewController.h"
 #import "A4GFacebookRSSParseOperation.h"
+#import "A4GRSSEntry.h"
 
 @interface A4GFacebookPageViewController ()
+{
+    NSMutableArray *arrayOfFBFeeds;
 
-@property (nonatomic, retain) NSURLConnection *facebookFeedConnection;
-@property (nonatomic, retain) NSMutableData *rssData;
-@property (nonatomic, retain) NSOperationQueue *parseQueue;
+    // for downloading the xml data
+    NSURLConnection *facebookFeedConnection;
+    NSMutableData *rssData;
+}
 
 @end
 
 @implementation A4GFacebookPageViewController
-
-@synthesize facebookFeedConnection;
-@synthesize rssData;
-@synthesize parseQueue;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,28 +35,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.parseQueue = [NSOperationQueue new];
+
+    static NSString *feedURLString = @"http://www.facebook.com/feeds/page.php?format=rss20&id=226029094497";
+    NSMutableURLRequest *earthquakeURLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
+    facebookFeedConnection = [[NSURLConnection alloc] initWithRequest:earthquakeURLRequest delegate:self];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addFacebookEntries:)
                                                  name:kAddFacebookEntryNotif
                                                object:nil];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    static NSString *feedURLString = @"http://www.facebook.com/feeds/page.php?format=rss20&id=226029094497";
-    NSMutableURLRequest *earthquakeURLRequest =
-    [NSMutableURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
-    //    [earthquakeURLRequest setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:15.0) Gecko/20100101 Firefox/15.0.1" forHTTPHeaderField:@"User-Agent"];
-    
-    //    static NSString *feedURLString = @"http://earthquake.usgs.gov/eqcenter/catalogs/7day-M2.5.xml";
-    //    NSURLRequest *earthquakeURLRequest =
-    //    [NSURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
-    
-    self.facebookFeedConnection = [[NSURLConnection alloc] initWithRequest:earthquakeURLRequest delegate:self];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +62,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 15;
+    return arrayOfFBFeeds.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,8 +77,10 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [NSString stringWithFormat: @"Master title: %d", indexPath.row];
-    cell.detailTextLabel.text =  [NSString stringWithFormat: @"Detail title: %d", indexPath.row];
+    A4GRSSEntry *entry = [arrayOfFBFeeds objectAtIndex: indexPath.row];
+    
+    cell.textLabel.text = entry.title;
+    cell.detailTextLabel.text =  entry.author;
     //    cell.imageView.image = ; image
     
     return cell;
@@ -129,16 +117,19 @@
     // also make sure the MIMEType is correct:
     //
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    if (([httpResponse statusCode]/100) == 2) {
-        self.rssData = [NSMutableData data];
+    if (([httpResponse statusCode]/100) == 2)
+    {
+        rssData = [NSMutableData new];
     }
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
     [rssData appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     if ([error code] == kCFURLErrorNotConnectedToInternet) {
         // if we can identify the error, we can present a more precise message to the user.
@@ -151,31 +142,28 @@
                                                          code:kCFURLErrorNotConnectedToInternet
                                                      userInfo:userInfo];
         [self handleError:noConnectionError];
-    } else {
+    }
+    else
+    {
         // otherwise handle the error generically
         [self handleError:error];
     }
-    self.facebookFeedConnection = nil;
+    
+    [facebookFeedConnection cancel];
+    facebookFeedConnection = nil;
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    self.facebookFeedConnection = nil;
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
-    // Spawn an NSOperation to parse the earthquake data so that the UI is not blocked while the
-    // application parses the XML data.
-    //
-    // IMPORTANT! - Don't access or affect UIKit objects on secondary threads.
-    //
+    A4GFacebookRSSParseOperation *parseOperation = [[A4GFacebookRSSParseOperation alloc] initWithData: rssData];
     
-    NSString *strData = [[NSString alloc]initWithData:self.rssData encoding:NSUTF8StringEncoding];
-    NSLog(@"begin parse");
-    A4GFacebookRSSParseOperation *parseOperation = [[A4GFacebookRSSParseOperation alloc] initWithData:self.rssData];
-    [self.parseQueue addOperation:parseOperation];
-    
-    // earthquakeData will be retained by the NSOperation until it has finished executing,
-    // so we no longer need a reference to it in the main thread.
-    self.rssData = nil;
+    NSOperationQueue *parseQueue = [NSOperationQueue new];
+    [parseQueue addOperation: parseOperation];
+
+    rssData = nil;
+    facebookFeedConnection = nil;
 }
 
 // Handle errors in the download by showing an alert to the user. This is a very
@@ -216,8 +204,10 @@
 // The batch size is set via the kSizeOfEarthquakeBatch constant.
 //
 
-- (void)addFacebookEntryToList:(NSArray *)entries {
-    NSLog(@"add to list entry %d", entries.count);
+- (void)addFacebookEntryToList:(NSArray *)entries
+{
+    arrayOfFBFeeds = [entries mutableCopy];
+    [self.tableView reloadData];
     // insert the earthquakes into our rootViewController's data source (for KVO purposes)
     // [self.rootViewController insertEarthquakes:earthquakes];
 }
