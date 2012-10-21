@@ -71,7 +71,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil)
@@ -211,17 +210,10 @@
     [self handleError:[[notif userInfo] valueForKey:kFacebookMsgErrorKey]];
 }
 
-// The NSOperation "ParseOperation" calls addEarthquakes: via NSNotification, on the main thread
-// which in turn calls this method, with batches of parsed objects.
-// The batch size is set via the kSizeOfEarthquakeBatch constant.
-//
-
 - (void)addFacebookEntryToList:(NSArray *)entries
 {
     arrayOfFBFeeds = [entries mutableCopy];
     [self.tableView reloadData];
-    // insert the earthquakes into our rootViewController's data source (for KVO purposes)
-    // [self.rootViewController insertEarthquakes:earthquakes];
 }
 
 @end
