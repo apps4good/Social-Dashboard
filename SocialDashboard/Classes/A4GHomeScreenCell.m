@@ -10,6 +10,8 @@
 
 @implementation A4GHomeScreenCell
 
+@synthesize delegate;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -81,6 +83,14 @@
 -(UIButton *)buttonC
 {
     return mediaButton[2];
+}
+
+#pragma mark - button action
+
+-(IBAction)openMedia:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    [self.delegate openMediaAtIndex: button.tag - 1];
 }
 
 

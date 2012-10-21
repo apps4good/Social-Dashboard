@@ -8,7 +8,8 @@
 
 #import "SDViewController.h"
 #import "A4GMediaObject.h"
-#import "A4GHomeScreenCell.h"
+#import "A4GFeedTableViewController.h"
+#import "A4GFacebookPageViewController.h"
 
 @interface SDViewController ()
 {
@@ -113,7 +114,7 @@
 {
     static NSString *reuseIdentifier = @"A4GHomeScreenCellIdentifier";
     A4GHomeScreenCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-//    cell.delegate = self;
+    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     A4GMediaObject *media = nil;
@@ -154,10 +155,66 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 100;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - Controllers
+-(void) openPhoneController:(A4GMediaObject *)mediaObject
 {
+    NSLog(@"%s", __func__);
 }
+
+-(void) openEmailController:(A4GMediaObject *)mediaObject
+{
+    NSLog(@"%s", __func__);
+}
+
+-(void) openFacebookController:(A4GMediaObject *)mediaObject
+{
+    NSLog(@"%s", __func__);
+    A4GFacebookPageViewController *feedTableVC = [[A4GFacebookPageViewController alloc] initWithStyle: UITableViewStylePlain];
+    feedTableVC.title = @"Facebook";
+    [self.navigationController pushViewController: feedTableVC animated: YES];
+}
+
+-(void) openTwitterController:(A4GMediaObject *)mediaObject
+{
+    NSLog(@"%s", __func__);
+    A4GFeedTableViewController *feedTableVC = [[A4GFeedTableViewController alloc] initWithStyle: UITableViewStylePlain];
+    feedTableVC.title = @"Twitter";
+    [self.navigationController pushViewController: feedTableVC animated: YES];
+}
+
+-(void) openNewsRSSController:(A4GMediaObject *)mediaObject
+{
+    NSLog(@"%s", __func__);
+}
+
+#pragma mark - A4GHomeScreenCellDelegate
+-(void)openMediaAtIndex:(int)index
+{
+    // open media view
+    A4GMediaObject *media = [arrayOfMedia objectAtIndex: index];
+
+    switch (media.type) {
+        case SMTPhone:
+            [self openPhoneController: media];
+            break;
+        case SMTEmail:
+            [self openEmailController: media];
+            break;
+        case SMTFacebook:
+            [self openFacebookController: media];
+            break;
+        case SMTTwitter:
+            [self openTwitterController: media];
+            break;
+        case SMTNewsRSS:
+            [self openNewsRSSController: media];
+            break;
+        default:
+            break;
+    }
+}
+
 @end
