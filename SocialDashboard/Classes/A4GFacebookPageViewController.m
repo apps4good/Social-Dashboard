@@ -90,31 +90,37 @@
         cell.textLabel.text = [entry stringForDate];
     }
     
-    cell.detailTextLabel.text = [entry stringDescriptionByStrippingHTML];
+    cell.detailTextLabel.text = [entry stringDescriptionByStrippingHTMLForDetail];
     cell.detailTextLabel.numberOfLines = 0;
     cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
 #pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.0;
+    return 120.0;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    A4GRSSEntry *entry = [arrayOfFBFeeds objectAtIndex: indexPath.row];
-//    
-//    UIViewController *viewController = [[UIViewController alloc] init];
-//    [viewController.view setFrame: [[UIScreen mainScreen] bounds]];
-//    UIWebView *webView = [[UIWebView alloc] initWithFrame: viewController.view.bounds];
-//    [webView loadRequest:[NSURLRequest requestWithURL: entry.url]];
-//    [viewController setView: webView];
-//    
-//    [self.navigationController pushViewController: viewController animated: YES];
+    A4GRSSEntry *entry = [arrayOfFBFeeds objectAtIndex: indexPath.row];
+    
+    UIViewController *viewController = [[UIViewController alloc] init];
+    [viewController.view setFrame: [[UIScreen mainScreen] bounds]];
+    [viewController.view setBackgroundColor: [UIColor whiteColor]];
+    [viewController setTitle: entry.title];
+    
+    UITextView *textView = [[UITextView alloc] initWithFrame: CGRectInset(viewController.view.bounds, 20, 20)];
+    [textView setText: entry.stringDescriptionByStrippingHTML];
+    [textView setFont: [UIFont systemFontOfSize: 20]];
+    [textView setEditable: NO];
+    [viewController.view addSubview: textView];
+    
+    [self.navigationController pushViewController: viewController animated: YES];
 }
 
 #pragma mark -
@@ -179,11 +185,7 @@
     facebookFeedConnection = nil;
 }
 
-// Handle errors in the download by showing an alert to the user. This is a very
-// simple way of handling the error, partly because this application does not have any offline
-// functionality for the user. Most real applications should handle the error in a less obtrusive
-// way and provide offline functionality to the user.
-//
+
 - (void)handleError:(NSError *)error {
     NSString *errorMessage = [error localizedDescription];
     UIAlertView *alertView =
@@ -197,16 +199,14 @@
     [alertView show];
 }
 
-// Our NSNotification callback from the running NSOperation to add the earthquakes
-//
+
 
 - (void)addFacebookEntries:(NSNotification *)notif {
     assert([NSThread isMainThread]);
     [self addFacebookEntryToList:[[notif userInfo] valueForKey:kFacebookResultsKey]];
 }
 
-// Our NSNotification callback from the running NSOperation when a parsing error has occurred
-//
+
 - (void)earthquakesError:(NSNotification *)notif {
     assert([NSThread isMainThread]);
     [self handleError:[[notif userInfo] valueForKey:kFacebookMsgErrorKey]];

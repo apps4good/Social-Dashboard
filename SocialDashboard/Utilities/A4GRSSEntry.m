@@ -48,20 +48,26 @@
     return [formatter stringFromDate: date];
 }
 
+- (NSString *) stringDescriptionByStrippingHTMLForDetail
+{
+    NSString* stringToReturn = [self stringDescriptionByStrippingHTML];
+    
+    if ([stringToReturn length] > 150)
+    {
+        return [[stringToReturn substringToIndex: 150] stringByAppendingString:@"..."];
+    }
+    else
+    {
+        return stringToReturn;
+    }
+}
+
 -(NSString *) stringDescriptionByStrippingHTML
 {
     NSRange r;
     NSString *s = [description copy];
     while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
         s = [s stringByReplacingCharactersInRange:r withString:@""];
-    
-    if ([s length] > 150)
-    {
-        return [[s substringToIndex: 150] stringByAppendingString:@"..."];
-    }
-    else
-    {
-        return s;
-    }
+    return s;
 }
 @end

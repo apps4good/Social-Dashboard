@@ -55,7 +55,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
@@ -67,12 +66,14 @@
     A4GRSSEntry *entry = [arrayOfRssFeeds objectAtIndex: indexPath.row];
     
 
-
     cell.textLabel.text = entry.title;
 
     
-    cell.detailTextLabel.text =  entry.author;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.detailTextLabel.text = [entry stringDescriptionByStrippingHTMLForDetail];
+    cell.detailTextLabel.numberOfLines = 0;
+    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -100,19 +101,22 @@
 #pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 66.0;
+    return 110;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    A4GRSSEntry *entry = [arrayOfRssFeeds objectAtIndex: indexPath.row];
+
+    UIViewController *viewController = [[UIViewController alloc] init];
+    [viewController.view setFrame: [[UIScreen mainScreen] bounds]];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame: viewController.view.bounds];
+    [webView loadRequest:[NSURLRequest requestWithURL: entry.url]];
+    [viewController setTitle: entry.title];
+    [viewController setView: webView];
+
+    [self.navigationController pushViewController: viewController animated: YES];
 }
 
 // Our NSNotification callback from the running NSOperation to add the earthquakes

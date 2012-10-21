@@ -38,5 +38,6 @@
 
 - (void) logData;
 - (NSString*) stringForDate;
--(NSString *) stringDescriptionByStrippingHTML;
+- (NSString *) stringDescriptionByStrippingHTML;
+- (NSString *) stringDescriptionByStrippingHTMLForDetail;
 @end
