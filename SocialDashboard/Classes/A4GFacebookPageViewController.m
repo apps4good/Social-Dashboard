@@ -87,10 +87,12 @@
     }
     else
     {
-        cell.textLabel.text = @"Untitled";
+        cell.textLabel.text = [entry stringForDate];
     }
     
-    cell.detailTextLabel.text =  entry.author;
+    cell.detailTextLabel.text = [entry stringDescriptionByStrippingHTML];
+    cell.detailTextLabel.numberOfLines = 0;
+    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -98,7 +100,7 @@
 #pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 66.0;
+    return 100.0;
 }
 
 

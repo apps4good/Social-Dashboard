@@ -124,6 +124,7 @@ static NSString * const kLinkElementName = @"link";
 static NSString * const kAuthorElementName = @"author";
 static NSString * const kTitleElementName = @"title";
 static NSString * const kUpdatedElementName = @"pubDate";
+static NSString * const kDescriptElementName = @"description";
 
 
 #pragma mark -
@@ -180,6 +181,9 @@ static NSString * const kUpdatedElementName = @"pubDate";
         
     } else if ([elementName isEqualToString:kLinkElementName]) {
         self.currentEntryObject.url = [NSURL URLWithString:self.currentParsedCharacterData];
+    }
+    else if ([elementName isEqualToString:kDescriptElementName]) {
+        self.currentEntryObject.description = [self.currentParsedCharacterData copy];
     }
     // Stop accumulating parsed character data. We won't start again until specific elements begin.
     accumulatingParsedCharacterData = NO;

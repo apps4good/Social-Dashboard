@@ -34,8 +34,34 @@
 @synthesize url;
 @synthesize title;
 @synthesize author;
+@synthesize description;
 
 - (void) logData {
     NSLog(@"\n\n%@\n%@\n%@\n%@\n\n",date,url,title,author);
+}
+
+- (NSString*) stringForDate;
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd hh:mm"];
+    
+    return [formatter stringFromDate: date];
+}
+
+-(NSString *) stringDescriptionByStrippingHTML
+{
+    NSRange r;
+    NSString *s = [description copy];
+    while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
+        s = [s stringByReplacingCharactersInRange:r withString:@""];
+    
+    if ([s length] > 150)
+    {
+        return [[s substringToIndex: 150] stringByAppendingString:@"..."];
+    }
+    else
+    {
+        return s;
+    }
 }
 @end

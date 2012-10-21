@@ -34,6 +34,9 @@
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;
+@property (nonatomic, strong) NSString *description;
 
 - (void) logData;
+- (NSString*) stringForDate;
+-(NSString *) stringDescriptionByStrippingHTML;
 @end
