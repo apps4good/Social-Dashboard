@@ -168,7 +168,8 @@
     
     if ([[device model] isEqualToString:@"iPhone"] )
     {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", mediaObject.info]]];
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Call this number" message: mediaObject.info delegate: self cancelButtonTitle:@"Cancel" otherButtonTitles: @"Call", nil];
+        [alert show];
     }
     else
     {
@@ -197,7 +198,6 @@
 
 -(void) openFacebookController:(A4GMediaObject *)mediaObject
 {
-    NSLog(@"%s", __func__);
     A4GFacebookPageViewController *feedTableVC = [[A4GFacebookPageViewController alloc] initWithStyle: UITableViewStylePlain];
     feedTableVC.title = @"Facebook";
     [self.navigationController pushViewController: feedTableVC animated: YES];
@@ -205,7 +205,6 @@
 
 -(void) openTwitterController:(A4GMediaObject *)mediaObject
 {
-    NSLog(@"%s", __func__);
     A4GFeedTableViewController *feedTableVC = [[A4GFeedTableViewController alloc] initWithStyle: UITableViewStylePlain];
     feedTableVC.title = @"Twitter";
     [self.navigationController pushViewController: feedTableVC animated: YES];
@@ -213,7 +212,6 @@
 
 -(void) openNewsRSSController:(A4GMediaObject *)mediaObject
 {
-    NSLog(@"%s", __func__);
     A4GRssTableViewController *rssTableVC = [[A4GRssTableViewController alloc] initWithStyle: UITableViewStylePlain];
     rssTableVC.title = @"News";
     [self.navigationController pushViewController: rssTableVC animated: YES];
@@ -245,6 +243,17 @@
             break;
     }
 }
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[UIApplication sharedApplication] openURL: [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", alertView.message]]];
+    }
+}
+
+
 #pragma mark - MFMailComposeViewControllerDelegate
 
 -(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error

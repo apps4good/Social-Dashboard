@@ -11,7 +11,7 @@
 	<key>A4GFacebookPage</key>
 	<string>226029094497</string>
 	<key>A4GHomeScreenBgColor</key>
-	<string>#FF00FF</string>
+	<string>#FF0000</string>
 	<key>A4GHomeScreenImage</key>
 	<string>bg.png</string>
 	<key>A4GHomeScreenTitle</key>
@@ -25,9 +25,9 @@
 	<key>A4GPhoneIcon</key>
 	<string>phone.png</string>
 	<key>A4GPhoneNumber</key>
-	<string>3065555555</string>
+	<string>306-555-5555</string>
 	<key>A4GToolBarColor</key>
-	<string>#FF00FF</string>
+	<string>#0000FF</string>
 	<key>A4GTwitterFeed</key>
 	<string>%23apps4good</string>
 	<key>A4GTwitterIcon</key>
