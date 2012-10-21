@@ -19,9 +19,9 @@ Social Dashboard has a set of default values pre-configured for demonstration pu
 * Edit 'A4GHomeScreenBgColor' and fill in the hex code for the background color
 
 ### Contributers ###
- * Alan Yeung ()
- * Daniel Merino ()
- * Yudi Xue (yudi.xue@usask.ca, http://hci.usask.ca/people/view.php?id=152)
+ * Alan Yeung (alan.tl.yeung@gmail.com)
+ * Daniel Merino (danmerino@gmail.com)
+ * Yudi Xue (binarycrayon@gmail.com, http://hci.usask.ca/people/view.php?id=152)
 
 ### License ###
 Copyright (c) 2012, Apps4Good. All rights reserved.
