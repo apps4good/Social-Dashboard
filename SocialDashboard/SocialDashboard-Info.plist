@@ -21,7 +21,7 @@
 	<key>A4GNewsIcon</key>
 	<string>news.png</string>
 	<key>A4GNewsRSSFeed</key>
-	<string></string>
+	<string>http://blog.danmerino.com/feed/</string>
 	<key>A4GPhoneIcon</key>
 	<string>phone.png</string>
 	<key>A4GPhoneNumber</key>
