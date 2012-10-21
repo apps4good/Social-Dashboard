@@ -36,7 +36,8 @@
 {
     [super viewDidLoad];
 
-    static NSString *feedURLString = @"http://www.facebook.com/feeds/page.php?format=rss20&id=226029094497";
+    static NSString *facebookURL = @"http://www.facebook.com/feeds/page.php?format=rss20&id=";
+    NSString *feedURLString = [facebookURL stringByAppendingString: [A4GSettings facebookPageLink]];
     NSMutableURLRequest *earthquakeURLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:feedURLString]];
     facebookFeedConnection = [[NSURLConnection alloc] initWithRequest:earthquakeURLRequest delegate:self];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -65,6 +66,8 @@
     return arrayOfFBFeeds.count;
 }
 
+#define allTrim( object ) [object stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet] ]
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -79,10 +82,17 @@
     // Configure the cell...
     A4GRSSEntry *entry = [arrayOfFBFeeds objectAtIndex: indexPath.row];
     
-    cell.textLabel.text = entry.title;
-    cell.detailTextLabel.text =  entry.author;
-    //    cell.imageView.image = ; image
+    if ([allTrim(entry.title) length] > 0)
+    {
+        cell.textLabel.text = entry.title;
+    }
+    else
+    {
+        cell.textLabel.text = @"Untitled";
+    }
     
+    cell.detailTextLabel.text =  entry.author;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -95,13 +105,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+//    A4GRSSEntry *entry = [arrayOfFBFeeds objectAtIndex: indexPath.row];
+//    
+//    UIViewController *viewController = [[UIViewController alloc] init];
+//    [viewController.view setFrame: [[UIScreen mainScreen] bounds]];
+//    UIWebView *webView = [[UIWebView alloc] initWithFrame: viewController.view.bounds];
+//    [webView loadRequest:[NSURLRequest requestWithURL: entry.url]];
+//    [viewController setView: webView];
+//    
+//    [self.navigationController pushViewController: viewController animated: YES];
 }
 
 #pragma mark -
