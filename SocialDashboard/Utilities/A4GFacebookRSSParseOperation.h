@@ -29,11 +29,11 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *kAddEarthquakesNotif;
-extern NSString *kEarthquakeResultsKey;
+extern NSString *kAddFacebookEntryNotif;
+extern NSString *kFacebookResultsKey;
 
-extern NSString *kEarthquakesErrorNotif;
-extern NSString *kEarthquakesMsgErrorKey;
+extern NSString *kFacebookErrorNotif;
+extern NSString *kFacebookMsgErrorKey;
 
 @class A4GRSSEntry;
 
@@ -53,5 +53,7 @@ extern NSString *kEarthquakesMsgErrorKey;
     NSUInteger parsedCounter;
 }
 @property (copy, readonly) NSData *fbRSSData;
+
+- (id)initWithData:(NSData *)parseData;
 
 @end

@@ -30,16 +30,16 @@
 #import "A4GRSSEntry.h"
 
 // NSNotification name for sending earthquake data back to the app delegate
-NSString *kAddEarthquakesNotif = @"AddEarthquakesNotif";
+NSString *kAddFacebookEntryNotif = @"AddEarthquakesNotif";
 
 // NSNotification userInfo key for obtaining the earthquake data
-NSString *kEarthquakeResultsKey = @"EarthquakeResultsKey";
+NSString *kFacebookResultsKey = @"EarthquakeResultsKey";
 
 // NSNotification name for reporting errors
-NSString *kEarthquakesErrorNotif = @"EarthquakeErrorNotif";
+NSString *kFacebookErrorNotif = @"EarthquakeErrorNotif";
 
 // NSNotification userInfo key for obtaining the error message
-NSString *kEarthquakesMsgErrorKey = @"EarthquakesMsgErrorKey";
+NSString *kFacebookMsgErrorKey = @"EarthquakesMsgErrorKey";
 
 @interface A4GFacebookRSSParseOperation () <NSXMLParserDelegate>
     @property (nonatomic, retain) A4GRSSEntry *currentEntryObject;
@@ -59,7 +59,7 @@ NSString *kEarthquakesMsgErrorKey = @"EarthquakesMsgErrorKey";
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
         [dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-        [dateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+        [dateFormatter setDateFormat:@"ccc', 'dd' 'LLL' 'yyyy' 'HH':'mm':'ss' 'z:"];
     }
     return self;
 }
@@ -67,10 +67,10 @@ NSString *kEarthquakesMsgErrorKey = @"EarthquakesMsgErrorKey";
 - (void)addEarthquakesToList:(NSArray *)earthquakes {
     assert([NSThread isMainThread]);
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kAddEarthquakesNotif
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddFacebookEntryNotif
                                                         object:self
                                                       userInfo:[NSDictionary dictionaryWithObject:earthquakes
-                                                                                           forKey:kEarthquakeResultsKey]];
+                                                                                           forKey:kFacebookResultsKey]];
 }
 
 // the main function for this NSOperation, to start the parsing
@@ -119,11 +119,11 @@ static const const NSUInteger kMaximumNumberOfEarthquakesToParse = 50;
 static NSUInteger const kSizeOfEarthquakeBatch = 10;
 
 // Reduce potential parsing errors by using string constants declared in a single place.
-static NSString * const kEntryElementName = @"entry";
+static NSString * const kEntryElementName = @"item";
 static NSString * const kLinkElementName = @"link";
+static NSString * const kAuthorElementName = @"author";
 static NSString * const kTitleElementName = @"title";
-static NSString * const kUpdatedElementName = @"updated";
-static NSString * const kGeoRSSPointElementName = @"georss:point";
+static NSString * const kUpdatedElementName = @"pubDate";
 
 
 #pragma mark -
@@ -136,33 +136,19 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
     // If the number of parsed earthquakes is greater than
     // kMaximumNumberOfEarthquakesToParse, abort the parse.
     //
-    if (parsedCounter >= kMaximumNumberOfEarthquakesToParse) {
-        // Use the flag didAbortParsing to distinguish between this deliberate stop
-        // and other parser errors.
-        //
+    if (parsedCounter >= 20) {
         didAbortParsing = YES;
         [parser abortParsing];
     }
     if ([elementName isEqualToString:kEntryElementName]) {
-        A4GRSSEntry *currentEntry = [[A4GRSSEntry alloc] init];
-        self.currentEntryObject = currentEntry;
-    } else if ([elementName isEqualToString:kLinkElementName]) {
-        NSString *relAttribute = [attributeDict valueForKey:@"rel"];
-        if ([relAttribute isEqualToString:@"alternate"]) {
-            NSString *url = [attributeDict valueForKey:@"href"];
-            self.currentEntryObject.url = [NSURL URLWithString:url];
-        }
-    } else if ([elementName isEqualToString:kTitleElementName] ||
-               [elementName isEqualToString:kUpdatedElementName] ||
-               [elementName isEqualToString:kGeoRSSPointElementName]) {
-        // For the 'title', 'updated', or 'georss:point' element begin accumulating parsed character data.
-        // The contents are collected in parser:foundCharacters:.
+        A4GRSSEntry *entry = [[A4GRSSEntry alloc] init];
+        self.currentEntryObject = entry;
+    } else {
         accumulatingParsedCharacterData = YES;
         // The mutable string needs to be reset to empty.
         [currentParsedCharacterData setString:@""];
     }
 }
-
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
@@ -176,47 +162,26 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
             self.currentParseBatch = [NSMutableArray array];
         }
     } else if ([elementName isEqualToString:kTitleElementName]) {
-        // The title element contains the magnitude and location in the following format:
-        // <title>M 3.6, Virgin Islands region<title/>
-        // Extract the magnitude and the location using a scanner:
-        NSScanner *scanner = [NSScanner scannerWithString:self.currentParsedCharacterData];
-        // Scan past the "M " before the magnitude.
-//        if ([scanner scanString:@"M " intoString:NULL]) {
-//            CGFloat magnitude;
-//            if ([scanner scanFloat:&magnitude]) {
-//                self.currentEarthquakeObject.magnitude = magnitude;
-//                // Scan past the ", " before the title.
-//                if ([scanner scanString:@", " intoString:NULL]) {
-//                    NSString *location = nil;
-//                    // Scan the remainer of the string.
-//                    if ([scanner scanUpToCharactersFromSet:
-//                         [NSCharacterSet illegalCharacterSet] intoString:&location]) {
-//                        self.currentEarthquakeObject.location = location;
-//                    }
-//                }
-//            }
-//        }
-    } else if ([elementName isEqualToString:kUpdatedElementName]) {
+        NSLog(@"current data %@", self.currentParsedCharacterData);
+        // title
+        // add title
+    }
+    else if ([elementName isEqualToString:kUpdatedElementName]) {
+        NSLog(@"current DATE data %@", self.currentParsedCharacterData);
         if (self.currentEntryObject != nil) {
             self.currentEntryObject.date =
             [dateFormatter dateFromString:self.currentParsedCharacterData];
+            NSLog(@"current parsed DATE data %@", self.currentEntryObject.date);
         }
         else {
             // kUpdatedElementName can be found outside an entry element (i.e. in the XML header)
             // so don't process it here.
         }
-    } else if ([elementName isEqualToString:kGeoRSSPointElementName]) {
-        // The georss:point element contains the latitude and longitude of the earthquake epicenter.
-        // 18.6477 -66.7452
-        //
-        NSScanner *scanner = [NSScanner scannerWithString:self.currentParsedCharacterData];
-//        double latitude, longitude;
-//        if ([scanner scanDouble:&latitude]) {
-//            if ([scanner scanDouble:&longitude]) {
-//                self.currentEarthquakeObject.latitude = latitude;
-//                self.currentEarthquakeObject.longitude = longitude;
-//            }
-//        }
+    } else if ([elementName isEqualToString:kAuthorElementName]) {
+        NSLog(@"current AUTHOR data %@", self.currentParsedCharacterData);
+        
+    } else if ([elementName isEqualToString:kLinkElementName]) {
+        NSLog(@"current LINK data %@", self.currentParsedCharacterData);
     }
     // Stop accumulating parsed character data. We won't start again until specific elements begin.
     accumulatingParsedCharacterData = NO;
@@ -239,10 +204,10 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
 // post the error as an NSNotification to our app delegate.
 //
 - (void)handleEarthquakesError:(NSError *)parseError {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kEarthquakesErrorNotif
+    [[NSNotificationCenter defaultCenter] postNotificationName:kFacebookErrorNotif
                                                         object:self
                                                       userInfo:[NSDictionary dictionaryWithObject:parseError
-                                                                                           forKey:kEarthquakesMsgErrorKey]];
+                                                                                           forKey:kFacebookMsgErrorKey]];
 }
 
 // an error occurred while parsing the earthquake data,
