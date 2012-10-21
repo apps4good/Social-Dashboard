@@ -41,9 +41,10 @@
     tweetData = [NSMutableArray new];
     tweetUser = [NSMutableArray new];
     
+    NSString *twitterSearch = [NSString stringWithFormat:@"http://search.twitter.com/search.json?q=%@", [A4GSettings twitterFeedLink]];
     
     
-    TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"http://search.twitter.com/search.json?q=%40danmerino"] parameters:nil requestMethod:TWRequestMethodGET];
+    TWRequest *postRequest = [[TWRequest alloc] initWithURL:[NSURL URLWithString:twitterSearch] parameters:nil requestMethod:TWRequestMethodGET];
     
 
 	
@@ -117,7 +118,7 @@
 #pragma mark - Table view delegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80.0;
+    return 98.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
