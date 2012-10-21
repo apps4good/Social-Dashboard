@@ -23,6 +23,7 @@
 		920B29A51633693F00D2BF8E /* NSError+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B29A01633693400D2BF8E /* NSError+A4G.m */; };
 		920B29A61633694200D2BF8E /* NSObject+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B29A21633693400D2BF8E /* NSObject+A4G.m */; };
 		920B29A71633694500D2BF8E /* NSString+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B29A41633693400D2BF8E /* NSString+A4G.m */; };
+		920B29B0163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B29AF163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m */; };
 		B5ABE588163335650063306E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE587163335650063306E /* UIKit.framework */; };
 		B5ABE58A163335650063306E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE589163335650063306E /* Foundation.framework */; };
 		B5ABE58C163335650063306E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE58B163335650063306E /* CoreGraphics.framework */; };
@@ -75,6 +76,8 @@
 		920B29A21633693400D2BF8E /* NSObject+A4G.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+A4G.m"; sourceTree = "<group>"; };
 		920B29A31633693400D2BF8E /* NSString+A4G.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+A4G.h"; sourceTree = "<group>"; };
 		920B29A41633693400D2BF8E /* NSString+A4G.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+A4G.m"; sourceTree = "<group>"; };
+		920B29AE163370FF00D2BF8E /* A4GFacebookRSSParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GFacebookRSSParseOperation.h; sourceTree = "<group>"; };
+		920B29AF163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GFacebookRSSParseOperation.m; sourceTree = "<group>"; };
 		B5ABE583163335650063306E /* SocialDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5ABE587163335650063306E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5ABE589163335650063306E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,8 @@
 				920B29791633686300D2BF8E /* JSON */,
 				920B2971163367C200D2BF8E /* A4GDownload.h */,
 				920B2972163367C200D2BF8E /* A4GDownload.m */,
+				920B29AE163370FF00D2BF8E /* A4GFacebookRSSParseOperation.h */,
+				920B29AF163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				920B29A51633693F00D2BF8E /* NSError+A4G.m in Sources */,
 				920B29A61633694200D2BF8E /* NSObject+A4G.m in Sources */,
 				920B29A71633694500D2BF8E /* NSString+A4G.m in Sources */,
+				920B29B0163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
