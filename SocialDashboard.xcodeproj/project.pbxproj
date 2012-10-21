@@ -210,7 +210,6 @@
 		B5ABE578163335650063306E = {
 			isa = PBXGroup;
 			children = (
-				37A35B2316344489005E9AA5 /* Twitter.framework */,
 				B5ABE58D163335650063306E /* SocialDashboard */,
 				B5ABE586163335650063306E /* Frameworks */,
 				B5ABE584163335650063306E /* Products */,
@@ -228,6 +227,7 @@
 		B5ABE586163335650063306E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37A35B2316344489005E9AA5 /* Twitter.framework */,
 				B5ABE6011634506D0063306E /* MessageUI.framework */,
 				B5ABE587163335650063306E /* UIKit.framework */,
 				B5ABE589163335650063306E /* Foundation.framework */,
@@ -460,6 +460,7 @@
 				B5ABE5F816337CC30063306E /* A4GFacebookPageViewController.m in Sources */,
 				92CA6E5F1634519600A5016A /* A4GRSSEntry.m in Sources */,
 				B5ABE62716346FB80063306E /* A4GHomeScreenViewController.m in Sources */,
+				37A35B3016347DBD005E9AA5 /* A4GRssTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,12 +531,13 @@
 		B5ABE5A8163335660063306E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialDashboard/SocialDashboard-Prefix.pch";
 				INFOPLIST_FILE = "SocialDashboard/SocialDashboard-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

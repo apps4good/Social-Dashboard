@@ -10,6 +10,7 @@
 #import "A4GMediaObject.h"
 #import "A4GFeedTableViewController.h"
 #import "A4GFacebookPageViewController.h"
+#import "A4GRssTableViewController.h"
 
 @interface A4GHomeScreenViewController ()
 {
@@ -143,6 +144,8 @@
     [scrollView setAutoresizingMask: UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     [self.view addSubview: scrollView];
     
+    [scrollView setBackgroundColor: [A4GSettings homeScreenBgColor]];
+    
     [self setup];
     [self loadIcons];
     [self layoutIcons];
@@ -157,6 +160,120 @@
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self layoutIcons];
+}
+#pragma mark - Controllers
+-(void) openPhoneController:(A4GMediaObject *)mediaObject
+{
+    UIDevice *device = [UIDevice currentDevice];
+    
+    if ([[device model] isEqualToString:@"iPhone"] )
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", mediaObject.info]]];
+    }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+-(void) openEmailController:(A4GMediaObject *)mediaObject
+{
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *shareMailView = [[MFMailComposeViewController alloc] init];
+        [shareMailView setCcRecipients: [NSArray arrayWithObject: mediaObject.info]];
+        [shareMailView setMailComposeDelegate: self];
+        [self presentModalViewController: shareMailView animated: YES];
+    }
+    else
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert!"
+                                                        message:@"Require Mail Account"
+                                                       delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+-(void) openFacebookController:(A4GMediaObject *)mediaObject
+{
+    NSLog(@"%s", __func__);
+    A4GFacebookPageViewController *feedTableVC = [[A4GFacebookPageViewController alloc] initWithStyle: UITableViewStylePlain];
+    feedTableVC.title = @"Facebook";
+    [self.navigationController pushViewController: feedTableVC animated: YES];
+}
+
+-(void) openTwitterController:(A4GMediaObject *)mediaObject
+{
+    NSLog(@"%s", __func__);
+    A4GFeedTableViewController *feedTableVC = [[A4GFeedTableViewController alloc] initWithStyle: UITableViewStylePlain];
+    feedTableVC.title = @"Twitter";
+    [self.navigationController pushViewController: feedTableVC animated: YES];
+}
+
+-(void) openNewsRSSController:(A4GMediaObject *)mediaObject
+{
+    NSLog(@"%s", __func__);
+    A4GRssTableViewController *rssTableVC = [[A4GRssTableViewController alloc] initWithStyle: UITableViewStylePlain];
+    rssTableVC.title = @"News";
+    [self.navigationController pushViewController: rssTableVC animated: YES];
+}
+
+-(void)openMedia:(id)sender
+{
+    // open media view
+    UIButton *button = (UIButton*)sender;
+    A4GMediaObject *media = [arrayOfMedia objectAtIndex: button.tag-1];
+    
+    switch (media.type) {
+        case SMTPhone:
+            [self openPhoneController: media];
+            break;
+        case SMTEmail:
+            [self openEmailController: media];
+            break;
+        case SMTFacebook:
+            [self openFacebookController: media];
+            break;
+        case SMTTwitter:
+            [self openTwitterController: media];
+            break;
+        case SMTNewsRSS:
+            [self openNewsRSSController: media];
+            break;
+        default:
+            break;
+    }
+}
+#pragma mark - MFMailComposeViewControllerDelegate
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+	if ([error code] == MFMailComposeErrorCodeSendFailed)
+	{
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error"
+														message:@"Cannot sent the email message."
+													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+	}
+    
+	if (result == MFMailComposeResultSent)
+	{
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Success"
+														message:@"Your message has been successfully sent."
+													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		
+	}
+	else if (result == MFMailComposeResultFailed)
+	{
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert!"
+														message:@"Your email has failed to sent."
+													   delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+		[alert show];
+	}
+    
+	[self dismissModalViewControllerAnimated: YES];
 }
 
 @end

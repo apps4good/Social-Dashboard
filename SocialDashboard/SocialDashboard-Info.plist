@@ -11,7 +11,9 @@
 	<key>A4GFacebookPage</key>
 	<string></string>
 	<key>A4GHomeScreenBgColor</key>
-	<string>#FFFFFF</string>
+	<string>#FF00FF</string>
+	<key>A4GHomeScreenImage</key>
+	<string>bg.png</string>
 	<key>A4GHomeScreenTitle</key>
 	<string>Apps4Good</string>
 	<key>A4GNavBarColor</key>
@@ -27,7 +29,7 @@
 	<key>A4GToolBarColor</key>
 	<string>#FF00FF</string>
 	<key>A4GTwitterFeed</key>
-	<string></string>
+	<string>%23apps4good</string>
 	<key>A4GTwitterIcon</key>
 	<string>twitter.png</string>
 	<key>CFBundleDevelopmentRegion</key>

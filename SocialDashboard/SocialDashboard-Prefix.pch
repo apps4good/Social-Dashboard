@@ -12,5 +12,4 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "A4GSettings.h"
-    #import "ApplicationConstants.h"
 #endif
