@@ -10,6 +10,7 @@
 #import "A4GMediaObject.h"
 #import "A4GFeedTableViewController.h"
 #import "A4GFacebookPageViewController.h"
+#import "A4GRssTableViewController.h"
 
 @interface SDViewController ()
 {
@@ -219,6 +220,9 @@
 -(void) openNewsRSSController:(A4GMediaObject *)mediaObject
 {
     NSLog(@"%s", __func__);
+    A4GRssTableViewController *rssTableVC = [[A4GRssTableViewController alloc] initWithStyle: UITableViewStylePlain];
+    rssTableVC.title = @"News";
+    [self.navigationController pushViewController: rssTableVC animated: YES];
 }
 
 #pragma mark - A4GHomeScreenCellDelegate
