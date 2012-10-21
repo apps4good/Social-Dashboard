@@ -18,9 +18,14 @@
     // Override point for customization after application launch.
     self.viewController = [[SDViewController alloc] initWithNibName:@"SDViewController" bundle:nil];
     UINavigationController *naviVC = [[UINavigationController alloc] initWithRootViewController: self.viewController];
-    self.viewController.title = [A4GSettings stringFromBundleForKey: kHomeScreenTitle];
+    self.viewController.title = [A4GSettings homeScreenTitle];
     [naviVC setToolbarHidden: NO];
     self.window.rootViewController = naviVC;
+    
+    // Appearance (Color Scheme)
+    [[UIToolbar appearance] setTintColor: [A4GSettings toolBarColor]];
+    [[UINavigationBar appearance] setTintColor: [A4GSettings navBarColor]];
+
     [self.window makeKeyAndVisible];
     return YES;
 }

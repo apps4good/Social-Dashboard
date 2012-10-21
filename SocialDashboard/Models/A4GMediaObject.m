@@ -10,6 +10,6 @@
 
 @implementation A4GMediaObject
 
-@synthesize iconImgName, info, type;
+@synthesize iconImg, info, type;
 
 @end

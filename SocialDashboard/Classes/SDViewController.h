@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 #import "A4GHomeScreenCell.h"
 
-@interface SDViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, A4GHomeScreenCellDelegate>
+@interface SDViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, A4GHomeScreenCellDelegate>
 {
     IBOutlet UITableView *mainTableView;
 }

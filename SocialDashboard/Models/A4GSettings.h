@@ -30,8 +30,23 @@
 
 @interface A4GSettings : NSObject
 
-// move to public from private for Social Dashboard usage
-+ (NSString*) stringFromBundleForKey:(NSString *)key;
+// Home Screen
++ (NSString *) homeScreenTitle;
+
+
+// Social Icons
++ (UIImage *) emailIcon;
++ (UIImage *) phoneIcon;
++ (UIImage *) facebookIcon;
++ (UIImage *) twitterIcon;
++ (UIImage *) newsIcon;
+
+// Social Links
++ (NSString *) emailInfo;
++ (NSString *) phoneNumner;
++ (NSString *) facebookPageLink;
++ (NSString *) twitterFeedLink;
++ (NSString *) newsRssFeedLink;
 
 + (NSString *) appName;
 + (NSString *) appText;
@@ -43,6 +58,7 @@
 + (NSString *) aboutURL;
 
 + (UIColor *) navBarColor;
++ (UIColor *) toolBarColor;
 + (UIColor *) buttonDoneColor;
 
 + (UIColor *) tablePlainBackColor;
