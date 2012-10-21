@@ -28,31 +28,36 @@
     
     // Phone
     media = [[A4GMediaObject alloc] init];
-    media.info = [A4GSettings stringFromBundleForKey: kPhoneNumber];
+    media.info = [A4GSettings phoneNumner];
+    media.iconImg = [A4GSettings phoneIcon];
     media.type = SMTPhone;
     [arrayOfMedia addObject: media];
 
     // Email
     media = [[A4GMediaObject alloc] init];
-    media.info = [A4GSettings stringFromBundleForKey: kEmailInfo];
+    media.info = [A4GSettings emailInfo];
+    media.iconImg = [A4GSettings emailIcon];
     media.type = SMTEmail;
     [arrayOfMedia addObject: media];
 
     // Facebook
     media = [[A4GMediaObject alloc] init];
-    media.info = [A4GSettings stringFromBundleForKey: kFacebookPage];
+    media.info = [A4GSettings facebookPageLink];
+    media.iconImg = [A4GSettings facebookIcon];
     media.type = SMTFacebook;
     [arrayOfMedia addObject: media];
 
     // Twitter
     media = [[A4GMediaObject alloc] init];
-    media.info = [A4GSettings stringFromBundleForKey: kTwitterFeed];
+    media.info = [A4GSettings twitterFeedLink];
+    media.iconImg = [A4GSettings twitterIcon];
     media.type = SMTTwitter;
     [arrayOfMedia addObject: media];
 
     // News
     media = [[A4GMediaObject alloc] init];
-    media.info = [A4GSettings stringFromBundleForKey: kNewsRSSFeed];
+    media.info = [A4GSettings newsRssFeedLink];
+    media.iconImg = [A4GSettings newsIcon];
     media.type = SMTNewsRSS;
     [arrayOfMedia addObject: media];
 
@@ -125,13 +130,16 @@
     cell.buttonC.tag = (indexPath.row * 3) + 3;
 
     media = [self mediaAtIndex: cell.buttonA.tag-1];
-    cell.buttonA.backgroundColor = [UIColor greenColor];
+    [cell.buttonA setBackgroundImage: media.iconImg forState: UIControlStateNormal];
+    [cell.buttonA setBackgroundImage: media.iconImg forState: UIControlStateHighlighted];
     
     media = [self mediaAtIndex: cell.buttonB.tag-1];
-    cell.buttonB.backgroundColor = [UIColor greenColor];
+    [cell.buttonB setBackgroundImage: media.iconImg forState: UIControlStateNormal];
+    [cell.buttonB setBackgroundImage: media.iconImg forState: UIControlStateHighlighted];
 
     media = [self mediaAtIndex: cell.buttonC.tag-1];
-    cell.buttonC.backgroundColor = [UIColor greenColor];
+    [cell.buttonC setBackgroundImage: media.iconImg forState: UIControlStateNormal];
+    [cell.buttonC setBackgroundImage: media.iconImg forState: UIControlStateHighlighted];
 
     if (indexPath.row == ceilf([arrayOfMedia count] / 3.0) - 1)
     {
@@ -161,12 +169,35 @@
 #pragma mark - Controllers
 -(void) openPhoneController:(A4GMediaObject *)mediaObject
 {
-    NSLog(@"%s", __func__);
+    UIDevice *device = [UIDevice currentDevice];
+    
+    if ([[device model] isEqualToString:@"iPhone"] )
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", mediaObject.info]]];
+    }
+    else
+    {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 -(void) openEmailController:(A4GMediaObject *)mediaObject
 {
-    NSLog(@"%s", __func__);
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *shareMailView = [[MFMailComposeViewController alloc] init];
+        [shareMailView setCcRecipients: [NSArray arrayWithObject: mediaObject.info]];
+        [shareMailView setMailComposeDelegate: self];
+        [self presentModalViewController: shareMailView animated: YES];
+    }
+    else
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert!"
+                                                        message:@"Require Mail Account"
+                                                       delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 -(void) openFacebookController:(A4GMediaObject *)mediaObject
@@ -215,6 +246,37 @@
         default:
             break;
     }
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+	if ([error code] == MFMailComposeErrorCodeSendFailed)
+	{
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Error"
+														message:@"Cannot sent the email message."
+													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+	}
+    
+	if (result == MFMailComposeResultSent)
+	{
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Success"
+														message:@"Your message has been successfully sent."
+													   delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		[alert show];
+		
+	}
+	else if (result == MFMailComposeResultFailed)
+	{
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Alert!"
+														message:@"Your email has failed to sent."
+													   delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+		[alert show];
+	}
+    
+	[self dismissModalViewControllerAnimated: YES];
 }
 
 @end

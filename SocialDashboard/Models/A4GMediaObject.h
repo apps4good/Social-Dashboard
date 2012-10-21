@@ -20,7 +20,7 @@ enum SocialMediaType
 
 @interface A4GMediaObject : NSObject
 
-@property (nonatomic, strong) NSString* iconImgName;
+@property (nonatomic, strong) UIImage* iconImg;
 @property (nonatomic, strong) NSString* info;
 @property (nonatomic, assign) enum SocialMediaType type;
 

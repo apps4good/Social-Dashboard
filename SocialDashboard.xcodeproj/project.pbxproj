@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37A35B2416344489005E9AA5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A35B2316344489005E9AA5 /* Twitter.framework */; };
 		920B2973163367C200D2BF8E /* A4GDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B2972163367C200D2BF8E /* A4GDownload.m */; };
 		920B29931633686300D2BF8E /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B297B1633686300D2BF8E /* NSObject+SBJson.m */; };
 		920B29941633686300D2BF8E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B297E1633686300D2BF8E /* SBJsonParser.m */; };
@@ -43,9 +44,21 @@
 		B5ABE5E4163355130063306E /* A4GHomeScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */; };
 		B5ABE5F4163379EE0063306E /* A4GFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */; };
 		B5ABE5F816337CC30063306E /* A4GFacebookPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5F716337CC30063306E /* A4GFacebookPageViewController.m */; };
+		B5ABE6021634506D0063306E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE6011634506D0063306E /* MessageUI.framework */; };
+		B5ABE613163466540063306E /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE609163466530063306E /* email.png */; };
+		B5ABE614163466540063306E /* email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE60A163466530063306E /* email@2x.png */; };
+		B5ABE615163466540063306E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE60B163466530063306E /* facebook.png */; };
+		B5ABE616163466540063306E /* facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE60C163466530063306E /* facebook@2x.png */; };
+		B5ABE617163466540063306E /* news.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE60D163466530063306E /* news.png */; };
+		B5ABE618163466540063306E /* news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE60E163466530063306E /* news@2x.png */; };
+		B5ABE619163466540063306E /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE60F163466530063306E /* phone.png */; };
+		B5ABE61A163466540063306E /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE610163466530063306E /* phone@2x.png */; };
+		B5ABE61B163466540063306E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE611163466540063306E /* twitter.png */; };
+		B5ABE61C163466540063306E /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE612163466540063306E /* twitter@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37A35B2316344489005E9AA5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		920B2971163367C200D2BF8E /* A4GDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GDownload.h; sourceTree = "<group>"; };
 		920B2972163367C200D2BF8E /* A4GDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GDownload.m; sourceTree = "<group>"; };
 		920B297A1633686300D2BF8E /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
@@ -113,6 +126,17 @@
 		B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GFeedTableViewController.m; sourceTree = "<group>"; };
 		B5ABE5F616337CC30063306E /* A4GFacebookPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GFacebookPageViewController.h; sourceTree = "<group>"; };
 		B5ABE5F716337CC30063306E /* A4GFacebookPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GFacebookPageViewController.m; sourceTree = "<group>"; };
+		B5ABE6011634506D0063306E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B5ABE609163466530063306E /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
+		B5ABE60A163466530063306E /* email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email@2x.png"; sourceTree = "<group>"; };
+		B5ABE60B163466530063306E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		B5ABE60C163466530063306E /* facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook@2x.png"; sourceTree = "<group>"; };
+		B5ABE60D163466530063306E /* news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news.png; sourceTree = "<group>"; };
+		B5ABE60E163466530063306E /* news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "news@2x.png"; sourceTree = "<group>"; };
+		B5ABE60F163466530063306E /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		B5ABE610163466530063306E /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
+		B5ABE611163466540063306E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		B5ABE612163466540063306E /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +144,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5ABE6021634506D0063306E /* MessageUI.framework in Frameworks */,
+				37A35B2416344489005E9AA5 /* Twitter.framework in Frameworks */,
 				B5ABE588163335650063306E /* UIKit.framework in Frameworks */,
 				B5ABE58A163335650063306E /* Foundation.framework in Frameworks */,
 				B5ABE58C163335650063306E /* CoreGraphics.framework in Frameworks */,
@@ -178,6 +204,7 @@
 		B5ABE578163335650063306E = {
 			isa = PBXGroup;
 			children = (
+				37A35B2316344489005E9AA5 /* Twitter.framework */,
 				B5ABE58D163335650063306E /* SocialDashboard */,
 				B5ABE586163335650063306E /* Frameworks */,
 				B5ABE584163335650063306E /* Products */,
@@ -195,6 +222,7 @@
 		B5ABE586163335650063306E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5ABE6011634506D0063306E /* MessageUI.framework */,
 				B5ABE587163335650063306E /* UIKit.framework */,
 				B5ABE589163335650063306E /* Foundation.framework */,
 				B5ABE58B163335650063306E /* CoreGraphics.framework */,
@@ -302,6 +330,16 @@
 		B5ABE5C8163345A30063306E /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				B5ABE609163466530063306E /* email.png */,
+				B5ABE60A163466530063306E /* email@2x.png */,
+				B5ABE60B163466530063306E /* facebook.png */,
+				B5ABE60C163466530063306E /* facebook@2x.png */,
+				B5ABE60D163466530063306E /* news.png */,
+				B5ABE60E163466530063306E /* news@2x.png */,
+				B5ABE60F163466530063306E /* phone.png */,
+				B5ABE610163466530063306E /* phone@2x.png */,
+				B5ABE611163466540063306E /* twitter.png */,
+				B5ABE612163466540063306E /* twitter@2x.png */,
 			);
 			path = Icons;
 			sourceTree = "<group>";
@@ -364,6 +402,16 @@
 				B5ABE59E163335660063306E /* Default-568h@2x.png in Resources */,
 				B5ABE5C616333F130063306E /* SDViewController.xib in Resources */,
 				B5ABE5E4163355130063306E /* A4GHomeScreenCell.xib in Resources */,
+				B5ABE613163466540063306E /* email.png in Resources */,
+				B5ABE614163466540063306E /* email@2x.png in Resources */,
+				B5ABE615163466540063306E /* facebook.png in Resources */,
+				B5ABE616163466540063306E /* facebook@2x.png in Resources */,
+				B5ABE617163466540063306E /* news.png in Resources */,
+				B5ABE618163466540063306E /* news@2x.png in Resources */,
+				B5ABE619163466540063306E /* phone.png in Resources */,
+				B5ABE61A163466540063306E /* phone@2x.png in Resources */,
+				B5ABE61B163466540063306E /* twitter.png in Resources */,
+				B5ABE61C163466540063306E /* twitter@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

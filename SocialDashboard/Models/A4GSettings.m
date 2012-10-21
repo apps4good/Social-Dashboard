@@ -50,6 +50,54 @@
 
 @implementation A4GSettings
 
+// Home Screen
++ (NSString *) homeScreenTitle {
+    return [A4GSettings stringFromBundleForKey:@"A4GHomeScreenTitle"];
+}
+
+// Social Icons
++ (UIImage *) emailIcon {
+    return [UIImage imageNamed: [A4GSettings stringFromBundleForKey: @"A4GEmailIcon"]];
+}
+
++ (UIImage *) phoneIcon {
+    return [UIImage imageNamed: [A4GSettings stringFromBundleForKey: @"A4GPhoneIcon"]];
+}
+
++ (UIImage *) facebookIcon {
+    return [UIImage imageNamed: [A4GSettings stringFromBundleForKey: @"A4GFacebookIcon"]];
+}
+
++ (UIImage *) twitterIcon {
+    return [UIImage imageNamed: [A4GSettings stringFromBundleForKey: @"A4GTwitterIcon"]];
+}
+
++ (UIImage *) newsIcon {
+    return [UIImage imageNamed: [A4GSettings stringFromBundleForKey: @"A4GNewsIcon"]];
+}
+
+// Social Links
++ (NSString *) emailInfo {
+    return [A4GSettings stringFromBundleForKey:@"A4GEmailInfo"];
+}
+
++ (NSString *) phoneNumner {
+    return [A4GSettings stringFromBundleForKey:@"A4GPhoneNumber"];
+}
+
++ (NSString *) facebookPageLink {
+    return [A4GSettings stringFromBundleForKey:@"A4GFacebookPage"];
+}
+
++ (NSString *) twitterFeedLink {
+    return [A4GSettings stringFromBundleForKey:@"A4GTwitterFeed"];
+}
+
++ (NSString *) newsRssFeedLink {
+    return [A4GSettings stringFromBundleForKey:@"A4GNewsRSSFeed"];
+}
+
+
 + (NSArray *) kmlFiles {
     return [[NSBundle mainBundle] pathsForResourcesOfType:@"kml" inDirectory:nil];
 }
@@ -84,6 +132,10 @@
 
 + (UIColor *) navBarColor {
     return [A4GSettings colorFromBundleForKey:@"A4GNavBarColor"];
+}
+
++ (UIColor *) toolBarColor {
+    return [A4GSettings colorFromBundleForKey:@"A4GToolBarColor"];
 }
 
 + (UIColor *) buttonDoneColor {
