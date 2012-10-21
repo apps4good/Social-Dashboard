@@ -8,7 +8,6 @@
 
 #import "SDAppDelegate.h"
 
-#import "SDViewController.h"
 #import "A4GHomeScreenViewController.h"
 
 @implementation SDAppDelegate

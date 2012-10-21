@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class SDViewController;
 @class A4GHomeScreenViewController;
 
 @interface SDAppDelegate : UIResponder <UIApplicationDelegate>
