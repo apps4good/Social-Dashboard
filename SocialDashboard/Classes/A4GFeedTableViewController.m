@@ -118,34 +118,30 @@
         cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: CellIdentifier];
     }
     
-        NSString *tweet       = [tweetData    objectAtIndex:indexPath.row];
-        NSString *user        = [tweetUser    objectAtIndex:indexPath.row];
-        NSString *profileUrl  = [tweetUserUrl objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat: @"@%@", user];
-        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
-        cell.detailTextLabel.numberOfLines = 0;
-        cell.detailTextLabel.text =  [NSString stringWithFormat: @"%@", tweet];
-    
-        if (cell.imageView.image == nil)
-        {
-            dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            //this will start the image loading in bg
-            dispatch_async(concurrentQueue, ^{
-                NSData *image = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:profileUrl]];
-                
-                //this will set the image when loading is finished
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    cell.imageView.image = [UIImage imageWithData:image];
-//                    //
-//                    dispatch_release(concurrentQueue);
-                    [tableView reloadData];
-                    
-                });
-            });
-        }
-    
-        //cell.imageView =
+    NSString *tweet       = [tweetData    objectAtIndex:indexPath.row];
+    NSString *user        = [tweetUser    objectAtIndex:indexPath.row];
+    NSString *profileUrl  = [tweetUserUrl objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat: @"@%@", user];
+    cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.detailTextLabel.numberOfLines = 0;
+    cell.detailTextLabel.text =  [NSString stringWithFormat: @"%@", tweet];
 
+    if (cell.imageView.image == nil)
+    {
+        dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        //this will start the image loading in bg
+        dispatch_async(concurrentQueue, ^{
+            NSData *image = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:profileUrl]];
+            
+            //this will set the image when loading is finished
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.imageView.image = [UIImage imageWithData:image];
+                [tableView reloadData];
+                
+            });
+        });
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

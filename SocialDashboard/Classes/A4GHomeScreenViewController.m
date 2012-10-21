@@ -151,6 +151,12 @@
     [self layoutIcons];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    [self layoutIcons];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
