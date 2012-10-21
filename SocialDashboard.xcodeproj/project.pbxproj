@@ -40,6 +40,8 @@
 		B5ABE5CB163348CF0063306E /* A4GMediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5CA163348CF0063306E /* A4GMediaObject.m */; };
 		B5ABE5E2163353790063306E /* A4GHomeScreenCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */; };
 		B5ABE5E4163355130063306E /* A4GHomeScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */; };
+		B5ABE5F4163379EE0063306E /* A4GFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */; };
+		B5ABE5F816337CC30063306E /* A4GFacebookPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5F716337CC30063306E /* A4GFacebookPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +106,10 @@
 		B5ABE5E0163353790063306E /* A4GHomeScreenCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GHomeScreenCell.h; sourceTree = "<group>"; };
 		B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GHomeScreenCell.m; sourceTree = "<group>"; };
 		B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A4GHomeScreenCell.xib; sourceTree = "<group>"; };
+		B5ABE5F2163379EE0063306E /* A4GFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GFeedTableViewController.h; sourceTree = "<group>"; };
+		B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GFeedTableViewController.m; sourceTree = "<group>"; };
+		B5ABE5F616337CC30063306E /* A4GFacebookPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GFacebookPageViewController.h; sourceTree = "<group>"; };
+		B5ABE5F716337CC30063306E /* A4GFacebookPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GFacebookPageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +257,10 @@
 				B5ABE5A0163335660063306E /* SDViewController.m */,
 				B5ABE5E0163353790063306E /* A4GHomeScreenCell.h */,
 				B5ABE5E1163353790063306E /* A4GHomeScreenCell.m */,
+				B5ABE5F2163379EE0063306E /* A4GFeedTableViewController.h */,
+				B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */,
+				B5ABE5F616337CC30063306E /* A4GFacebookPageViewController.h */,
+				B5ABE5F716337CC30063306E /* A4GFacebookPageViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -383,6 +393,8 @@
 				920B29A61633694200D2BF8E /* NSObject+A4G.m in Sources */,
 				920B29A71633694500D2BF8E /* NSString+A4G.m in Sources */,
 				920B29B0163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m in Sources */,
+				B5ABE5F4163379EE0063306E /* A4GFeedTableViewController.m in Sources */,
+				B5ABE5F816337CC30063306E /* A4GFacebookPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "A4GHomeScreenCell.h"
 
-@interface SDViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SDViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, A4GHomeScreenCellDelegate>
 {
     IBOutlet UITableView *mainTableView;
 }
