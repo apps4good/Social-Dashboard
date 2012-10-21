@@ -7,6 +7,7 @@
 //
 
 #import "A4GFacebookRSSParseOperation.h"
+#import "A4GRSSEntry.h"
 
 // NSNotification name for sending earthquake data back to the app delegate
 NSString *kAddEarthquakesNotif = @"AddEarthquakesNotif";
@@ -21,13 +22,14 @@ NSString *kEarthquakesErrorNotif = @"EarthquakeErrorNotif";
 NSString *kEarthquakesMsgErrorKey = @"EarthquakesMsgErrorKey";
 
 @interface A4GFacebookRSSParseOperation () <NSXMLParserDelegate>
-@property (nonatomic, retain) NSMutableArray *currentParseBatch;
-@property (nonatomic, retain) NSMutableString *currentParsedCharacterData;
+    @property (nonatomic, retain) A4GRSSEntry *currentEntryObject;
+    @property (nonatomic, retain) NSMutableArray *currentParseBatch;
+    @property (nonatomic, retain) NSMutableString *currentParsedCharacterData;
 @end
 
 @implementation A4GFacebookRSSParseOperation
 
-@synthesize fbRSSData, currentParsedCharacterData, currentParseBatch;
+@synthesize fbRSSData, currentEntryObject, currentParsedCharacterData, currentParseBatch;
 
 - (id)initWithData:(NSData *)parseData
 {
@@ -74,9 +76,9 @@ NSString *kEarthquakesMsgErrorKey = @"EarthquakesMsgErrorKey";
                             waitUntilDone:NO];
     }
     
+    self.currentEntryObject = nil;
     self.currentParseBatch = nil;
     self.currentParsedCharacterData = nil;
-    
 }
 
 #pragma mark -
@@ -114,7 +116,7 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
     // If the number of parsed earthquakes is greater than
     // kMaximumNumberOfEarthquakesToParse, abort the parse.
     //
-    if (parsedEarthquakesCounter >= kMaximumNumberOfEarthquakesToParse) {
+    if (parsedCounter >= kMaximumNumberOfEarthquakesToParse) {
         // Use the flag didAbortParsing to distinguish between this deliberate stop
         // and other parser errors.
         //
@@ -122,14 +124,13 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
         [parser abortParsing];
     }
     if ([elementName isEqualToString:kEntryElementName]) {
-        Earthquake *earthquake = [[Earthquake alloc] init];
-        self.currentEarthquakeObject = earthquake;
-        [earthquake release];
+        A4GRSSEntry *currentEntry = [[A4GRSSEntry alloc] init];
+        self.currentEntryObject = currentEntry;
     } else if ([elementName isEqualToString:kLinkElementName]) {
         NSString *relAttribute = [attributeDict valueForKey:@"rel"];
         if ([relAttribute isEqualToString:@"alternate"]) {
-            NSString *USGSWebLink = [attributeDict valueForKey:@"href"];
-            self.currentEarthquakeObject.USGSWebLink = [NSURL URLWithString:USGSWebLink];
+            NSString *url = [attributeDict valueForKey:@"href"];
+            self.currentEntryObject.url = [NSURL URLWithString:url];
         }
     } else if ([elementName isEqualToString:kTitleElementName] ||
                [elementName isEqualToString:kUpdatedElementName] ||
@@ -146,8 +147,8 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:kEntryElementName]) {
-        [self.currentParseBatch addObject:self.currentEarthquakeObject];
-        parsedEarthquakesCounter++;
+        [self.currentParseBatch addObject:self.currentEntryObject];
+        parsedCounter++;
         if ([self.currentParseBatch count] >= kMaximumNumberOfEarthquakesToParse) {
             [self performSelectorOnMainThread:@selector(addEarthquakesToList:)
                                    withObject:self.currentParseBatch
@@ -160,24 +161,24 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
         // Extract the magnitude and the location using a scanner:
         NSScanner *scanner = [NSScanner scannerWithString:self.currentParsedCharacterData];
         // Scan past the "M " before the magnitude.
-        if ([scanner scanString:@"M " intoString:NULL]) {
-            CGFloat magnitude;
-            if ([scanner scanFloat:&magnitude]) {
-                self.currentEarthquakeObject.magnitude = magnitude;
-                // Scan past the ", " before the title.
-                if ([scanner scanString:@", " intoString:NULL]) {
-                    NSString *location = nil;
-                    // Scan the remainer of the string.
-                    if ([scanner scanUpToCharactersFromSet:
-                         [NSCharacterSet illegalCharacterSet] intoString:&location]) {
-                        self.currentEarthquakeObject.location = location;
-                    }
-                }
-            }
-        }
+//        if ([scanner scanString:@"M " intoString:NULL]) {
+//            CGFloat magnitude;
+//            if ([scanner scanFloat:&magnitude]) {
+//                self.currentEarthquakeObject.magnitude = magnitude;
+//                // Scan past the ", " before the title.
+//                if ([scanner scanString:@", " intoString:NULL]) {
+//                    NSString *location = nil;
+//                    // Scan the remainer of the string.
+//                    if ([scanner scanUpToCharactersFromSet:
+//                         [NSCharacterSet illegalCharacterSet] intoString:&location]) {
+//                        self.currentEarthquakeObject.location = location;
+//                    }
+//                }
+//            }
+//        }
     } else if ([elementName isEqualToString:kUpdatedElementName]) {
-        if (self.currentEarthquakeObject != nil) {
-            self.currentEarthquakeObject.date =
+        if (self.currentEntryObject != nil) {
+            self.currentEntryObject.date =
             [dateFormatter dateFromString:self.currentParsedCharacterData];
         }
         else {
@@ -189,13 +190,13 @@ static NSString * const kGeoRSSPointElementName = @"georss:point";
         // 18.6477 -66.7452
         //
         NSScanner *scanner = [NSScanner scannerWithString:self.currentParsedCharacterData];
-        double latitude, longitude;
-        if ([scanner scanDouble:&latitude]) {
-            if ([scanner scanDouble:&longitude]) {
-                self.currentEarthquakeObject.latitude = latitude;
-                self.currentEarthquakeObject.longitude = longitude;
-            }
-        }
+//        double latitude, longitude;
+//        if ([scanner scanDouble:&latitude]) {
+//            if ([scanner scanDouble:&longitude]) {
+//                self.currentEarthquakeObject.latitude = latitude;
+//                self.currentEarthquakeObject.longitude = longitude;
+//            }
+//        }
     }
     // Stop accumulating parsed character data. We won't start again until specific elements begin.
     accumulatingParsedCharacterData = NO;

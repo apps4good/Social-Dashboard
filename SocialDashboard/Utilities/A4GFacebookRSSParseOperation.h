@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class A4GRSSEntry;
+
 @interface A4GFacebookRSSParseOperation : NSOperation {
     NSData *fbRSSData;
-    
+
 @private
     NSDateFormatter *dateFormatter;
     
     // these variables are used during parsing
-    // Earthquake *currentEarthquakeObject;
+    A4GRSSEntry *currentEntryObject;
     NSMutableArray *currentParseBatch;
     NSMutableString *currentParsedCharacterData;
     

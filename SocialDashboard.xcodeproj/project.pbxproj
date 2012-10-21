@@ -24,6 +24,7 @@
 		920B29A61633694200D2BF8E /* NSObject+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B29A21633693400D2BF8E /* NSObject+A4G.m */; };
 		920B29A71633694500D2BF8E /* NSString+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B29A41633693400D2BF8E /* NSString+A4G.m */; };
 		920B29B0163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 920B29AF163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m */; };
+		92CA6E5F1634519600A5016A /* A4GRSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CA6E5E1634519600A5016A /* A4GRSSEntry.m */; };
 		B5ABE588163335650063306E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE587163335650063306E /* UIKit.framework */; };
 		B5ABE58A163335650063306E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE589163335650063306E /* Foundation.framework */; };
 		B5ABE58C163335650063306E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE58B163335650063306E /* CoreGraphics.framework */; };
@@ -80,6 +81,8 @@
 		920B29A41633693400D2BF8E /* NSString+A4G.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+A4G.m"; sourceTree = "<group>"; };
 		920B29AE163370FF00D2BF8E /* A4GFacebookRSSParseOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GFacebookRSSParseOperation.h; sourceTree = "<group>"; };
 		920B29AF163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GFacebookRSSParseOperation.m; sourceTree = "<group>"; };
+		92CA6E5D1634519600A5016A /* A4GRSSEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GRSSEntry.h; sourceTree = "<group>"; };
+		92CA6E5E1634519600A5016A /* A4GRSSEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GRSSEntry.m; sourceTree = "<group>"; };
 		B5ABE583163335650063306E /* SocialDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5ABE587163335650063306E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B5ABE589163335650063306E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +137,8 @@
 				920B2972163367C200D2BF8E /* A4GDownload.m */,
 				920B29AE163370FF00D2BF8E /* A4GFacebookRSSParseOperation.h */,
 				920B29AF163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m */,
+				92CA6E5D1634519600A5016A /* A4GRSSEntry.h */,
+				92CA6E5E1634519600A5016A /* A4GRSSEntry.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				920B29B0163370FF00D2BF8E /* A4GFacebookRSSParseOperation.m in Sources */,
 				B5ABE5F4163379EE0063306E /* A4GFeedTableViewController.m in Sources */,
 				B5ABE5F816337CC30063306E /* A4GFacebookPageViewController.m in Sources */,
+				92CA6E5F1634519600A5016A /* A4GRSSEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +471,7 @@
 		B5ABE5A8163335660063306E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialDashboard/SocialDashboard-Prefix.pch";
 				INFOPLIST_FILE = "SocialDashboard/SocialDashboard-Info.plist";
@@ -477,6 +484,7 @@
 		B5ABE5A9163335660063306E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SocialDashboard/SocialDashboard-Prefix.pch";
 				INFOPLIST_FILE = "SocialDashboard/SocialDashboard-Info.plist";
