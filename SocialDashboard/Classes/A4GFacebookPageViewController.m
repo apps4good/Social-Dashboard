@@ -35,7 +35,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.parseQueue = [NSOperationQueue new];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addFacebookEntries:)
+                                                 name:kAddFacebookEntryNotif
+                                               object:nil];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -164,7 +169,7 @@
     //
     
     NSString *strData = [[NSString alloc]initWithData:self.rssData encoding:NSUTF8StringEncoding];
-    NSLog(@"DATA:%@", strData);
+    NSLog(@"begin parse");
     A4GFacebookRSSParseOperation *parseOperation = [[A4GFacebookRSSParseOperation alloc] initWithData:self.rssData];
     [self.parseQueue addOperation:parseOperation];
     
@@ -193,17 +198,16 @@
 
 // Our NSNotification callback from the running NSOperation to add the earthquakes
 //
-- (void)addEarthquakes:(NSNotification *)notif {
+
+- (void)addFacebookEntries:(NSNotification *)notif {
     assert([NSThread isMainThread]);
-    
-    [self addEarthquakesToList:[[notif userInfo] valueForKey:kFacebookResultsKey]];
+    [self addFacebookEntryToList:[[notif userInfo] valueForKey:kFacebookResultsKey]];
 }
 
 // Our NSNotification callback from the running NSOperation when a parsing error has occurred
 //
 - (void)earthquakesError:(NSNotification *)notif {
     assert([NSThread isMainThread]);
-    
     [self handleError:[[notif userInfo] valueForKey:kFacebookMsgErrorKey]];
 }
 
@@ -211,8 +215,9 @@
 // which in turn calls this method, with batches of parsed objects.
 // The batch size is set via the kSizeOfEarthquakeBatch constant.
 //
-- (void)addEarthquakesToList:(NSArray *)earthquakes {
-    
+
+- (void)addFacebookEntryToList:(NSArray *)entries {
+    NSLog(@"add to list entry %d", entries.count);
     // insert the earthquakes into our rootViewController's data source (for KVO purposes)
     // [self.rootViewController insertEarthquakes:earthquakes];
 }

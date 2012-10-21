@@ -64,17 +64,18 @@ NSString *kFacebookMsgErrorKey = @"EarthquakesMsgErrorKey";
     return self;
 }
 
-- (void)addEarthquakesToList:(NSArray *)earthquakes {
+- (void)addFacebookEntryToList:(NSArray *)entries {
     assert([NSThread isMainThread]);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddFacebookEntryNotif
                                                         object:self
-                                                      userInfo:[NSDictionary dictionaryWithObject:earthquakes
+                                                      userInfo:[NSDictionary dictionaryWithObject:entries
                                                                                            forKey:kFacebookResultsKey]];
 }
 
 // the main function for this NSOperation, to start the parsing
 - (void)main {
+    NSLog(@"start here");
     self.currentParseBatch = [NSMutableArray array];
     self.currentParsedCharacterData = [NSMutableString string];
     
@@ -91,7 +92,7 @@ NSString *kFacebookMsgErrorKey = @"EarthquakesMsgErrorKey";
     // the array and, if necessary, send it to the main thread.
     //
     if ([self.currentParseBatch count] > 0) {
-        [self performSelectorOnMainThread:@selector(addEarthquakesToList:)
+        [self performSelectorOnMainThread:@selector(addFacebookEntryToList:)
                                withObject:self.currentParseBatch
                             waitUntilDone:NO];
     }
@@ -136,7 +137,7 @@ static NSString * const kUpdatedElementName = @"pubDate";
     // If the number of parsed earthquakes is greater than
     // kMaximumNumberOfEarthquakesToParse, abort the parse.
     //
-    if (parsedCounter >= 20) {
+    if (parsedCounter >= 21) {
         didAbortParsing = YES;
         [parser abortParsing];
     }
@@ -156,33 +157,33 @@ static NSString * const kUpdatedElementName = @"pubDate";
         [self.currentParseBatch addObject:self.currentEntryObject];
         parsedCounter++;
         if ([self.currentParseBatch count] >= kMaximumNumberOfEarthquakesToParse) {
-            [self performSelectorOnMainThread:@selector(addEarthquakesToList:)
+            [self performSelectorOnMainThread:@selector(addFacebookEntryToList:)
                                    withObject:self.currentParseBatch
                                 waitUntilDone:NO];
             self.currentParseBatch = [NSMutableArray array];
         }
     } else if ([elementName isEqualToString:kTitleElementName]) {
-        NSLog(@"current data %@", self.currentParsedCharacterData);
-        // title
-        // add title
+        self.currentEntryObject.title = self.currentParsedCharacterData;
     }
     else if ([elementName isEqualToString:kUpdatedElementName]) {
-        NSLog(@"current DATE data %@", self.currentParsedCharacterData);
         if (self.currentEntryObject != nil) {
             self.currentEntryObject.date =
             [dateFormatter dateFromString:self.currentParsedCharacterData];
-            NSLog(@"current parsed DATE data %@", self.currentEntryObject.date);
         }
         else {
+            // fail gracefully
+            
             // kUpdatedElementName can be found outside an entry element (i.e. in the XML header)
             // so don't process it here.
         }
     } else if ([elementName isEqualToString:kAuthorElementName]) {
-        NSLog(@"current AUTHOR data %@", self.currentParsedCharacterData);
+        self.currentEntryObject.author = self.currentParsedCharacterData;
         
     } else if ([elementName isEqualToString:kLinkElementName]) {
-        NSLog(@"current LINK data %@", self.currentParsedCharacterData);
+        self.currentEntryObject.url = [NSURL URLWithString:self.currentParsedCharacterData];
     }
+    
+    [self.currentEntryObject logData];
     // Stop accumulating parsed character data. We won't start again until specific elements begin.
     accumulatingParsedCharacterData = NO;
 }

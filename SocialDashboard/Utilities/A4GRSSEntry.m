@@ -32,5 +32,10 @@
 
 @synthesize date;
 @synthesize url;
+@synthesize title;
+@synthesize author;
 
+- (void) logData {
+    NSLog(@"\n\n%@\n%@\n%@\n%@\n\n",date,url,title,author);
+}
 @end
