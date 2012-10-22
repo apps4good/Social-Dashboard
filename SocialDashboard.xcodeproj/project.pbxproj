@@ -39,7 +39,6 @@
 		B5ABE5BB16333ACE0063306E /* A4GSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5BA16333ACE0063306E /* A4GSettings.m */; };
 		B5ABE5C016333B3D0063306E /* UIColor+A4G.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5BF16333B3D0063306E /* UIColor+A4G.m */; };
 		B5ABE5CB163348CF0063306E /* A4GMediaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5CA163348CF0063306E /* A4GMediaObject.m */; };
-		B5ABE5E4163355130063306E /* A4GHomeScreenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */; };
 		B5ABE5F4163379EE0063306E /* A4GFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */; };
 		B5ABE5F816337CC30063306E /* A4GFacebookPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B5ABE5F716337CC30063306E /* A4GFacebookPageViewController.m */; };
 		B5ABE6021634506D0063306E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5ABE6011634506D0063306E /* MessageUI.framework */; };
@@ -114,10 +113,8 @@
 		B5ABE5BA16333ACE0063306E /* A4GSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GSettings.m; sourceTree = "<group>"; };
 		B5ABE5BE16333B3D0063306E /* UIColor+A4G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+A4G.h"; sourceTree = "<group>"; };
 		B5ABE5BF16333B3D0063306E /* UIColor+A4G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+A4G.m"; sourceTree = "<group>"; };
-		B5ABE5C7163343550063306E /* ApplicationConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationConstants.h; sourceTree = "<group>"; };
 		B5ABE5C9163348CF0063306E /* A4GMediaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GMediaObject.h; sourceTree = "<group>"; };
 		B5ABE5CA163348CF0063306E /* A4GMediaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GMediaObject.m; sourceTree = "<group>"; };
-		B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = A4GHomeScreenCell.xib; sourceTree = "<group>"; };
 		B5ABE5F2163379EE0063306E /* A4GFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GFeedTableViewController.h; sourceTree = "<group>"; };
 		B5ABE5F3163379EE0063306E /* A4GFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A4GFeedTableViewController.m; sourceTree = "<group>"; };
 		B5ABE5F616337CC30063306E /* A4GFacebookPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A4GFacebookPageViewController.h; sourceTree = "<group>"; };
@@ -248,7 +245,6 @@
 				B5ABE590163335660063306E /* InfoPlist.strings */,
 				B5ABE593163335660063306E /* main.m */,
 				B5ABE595163335660063306E /* SocialDashboard-Prefix.pch */,
-				B5ABE5C7163343550063306E /* ApplicationConstants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -319,7 +315,6 @@
 		B5ABE5C416333E540063306E /* NIBS */ = {
 			isa = PBXGroup;
 			children = (
-				B5ABE5E3163355130063306E /* A4GHomeScreenCell.xib */,
 			);
 			path = NIBS;
 			sourceTree = "<group>";
@@ -397,7 +392,6 @@
 				B5ABE59A163335660063306E /* Default.png in Resources */,
 				B5ABE59C163335660063306E /* Default@2x.png in Resources */,
 				B5ABE59E163335660063306E /* Default-568h@2x.png in Resources */,
-				B5ABE5E4163355130063306E /* A4GHomeScreenCell.xib in Resources */,
 				B5ABE613163466540063306E /* email.png in Resources */,
 				B5ABE614163466540063306E /* email@2x.png in Resources */,
 				B5ABE615163466540063306E /* facebook.png in Resources */,
