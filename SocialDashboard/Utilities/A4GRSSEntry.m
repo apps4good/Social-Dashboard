@@ -67,7 +67,7 @@
     NSRange r;
     NSString *s = [description copy];
     while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
-        s = [s stringByReplacingCharactersInRange:r withString:@""];
+        s = [s stringByReplacingCharactersInRange:r withString:@" "];
     return s;
 }
 @end
